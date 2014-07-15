@@ -11,6 +11,7 @@
 \usepackage{amsmath}
 \usepackage{algpseudocode}
 \usepackage{qtree}
+\usepackage{tkz-graph}
 
 % ----------------------------------------------------------------
 % TODO: Enter the assignment number, your name, and your student number below
@@ -44,11 +45,54 @@
 % ----------------------------------------------------------------
 
 Suppose G(V, E) is representative of a network where V = \{s, t, v$_{1}$, ..., v$_{n}$\} 
-and E is the edges that make up the network. Suppose we have sets S and T such that
+and E is the set of edges that make up this network. Suppose we have sets S and T such that
 s $\in$ S, t $\in$ T, (S $\cup$ T) - \{s, t\} = V, and S $\cap$ T = $\emptyset$. Also, 
 suppose that for all possible arrangement of vertices in S and T, c(S, T) = f(S, T), which means that G(V, E) has an exponential number of minimum cuts between s and t.\\
+
 To construct a graph that is representative of there being 2$^{n}$ possible minimum cuts, a tree
-like structure seems appropriate since there are 2$^{n}$ leaves in a full tree for n levels in the tree. Taking inspiration from Huffman encoding, we wish to have a graph that for each leaf in a full tree will represent a unique binary string that represents whether a vertex is in S or T. Suppose we arrange the the string as follows, v$_{1}$, ..., v$_{n}$, where if v$_{i}$ is in S then v$_{i}$ = 0 and v$_{i}$ = 1 if it is in T. The tree/graph can be constructed so that each left edge appends 0 to the vertex string, and WLOG each right edge appends 1. Finally, when reaching any leaf we have an n length binary string that represents a unique cut S, T. In total there are 2$_{n}$ such possible cuts.\\ 
+like structure seems appropriate since there are 2$^{n}$ leaves in a full and complete tree for n levels in the tree. Taking inspiration from Huffman encoding, we wish to have a graph that for each leaf in a full tree will represent a unique binary string that represents whether a vertex is in S or T. Suppose we arrange the the string as follows, v$_{1}$, ..., v$_{n}$, where if v$_{i}$ is in S then v$_{i}$ = 0 and v$_{i}$ = 1 if it is in T. The tree/graph can be constructed so that each left edge appends 0 to the vertex string, and WLOG each right edge appends 1. Finally, when reaching any leaf we have an n length binary string that represents a unique cut S, T. In total there are 2$^{n}$ such possible cuts.\\ 
+
+For example, suppose we had $\mid$V$\mid$ = 3 and we are certain that there are an exponential number of minimum cuts. We construct a full and complete binary tree as follows to represent the minimum cuts:\\
+
+\begin{tikzpicture}[level distance=2cm,
+level 1/.style={sibling distance=5cm},
+level 2/.style={sibling distance=2 cm},
+level 3/.style={sibling distance=1cm}]
+\tikzstyle{every node}=[circle,draw]
+
+\node (Root) {}
+    child {
+    node {} 
+    child { node {} 
+	child {  node {1} edge from parent node[left,draw=none] {0} }
+    	child { node {2} edge from parent node[right,draw=none] {1} }
+    	edge from parent node[left,draw=none] {0} 
+    }
+    child { node {} 
+	child { node {3} edge from parent node[left,draw=none] {0} }
+    	child { node {4} edge from parent node[right,draw=none] {1} }
+	edge from parent node[right,draw=none] {1} 
+    }
+    edge from parent node[left,draw=none] {0}
+}
+child {
+    node {}
+    child { node {} 
+	child {  node {5} edge from parent node[left,draw=none] {0} }
+    	child { node {6} edge from parent node[right,draw=none] {1} }
+    	edge from parent node[left,draw=none] {0} 
+    }
+    child { node {} 
+	child {  node {7} edge from parent node[left,draw=none] {0} }
+    	child { node {8} edge from parent node[right,draw=none] {1} }
+	edge from parent node[right,draw=none] {1} 
+    }
+    edge from parent node[right,draw=none] {1}
+};
+
+\end{tikzpicture} \\
+
+If we were to trace each leaf from the node, in a similar fashion to Huffman encoding, we would have 1: 000, 2: 001, 3: 010, 4: 011, 5: 100, 6: 101, 7: 110, and 8: 111. So, it is clear that each binary string representing \mbox{v$_{1}$, v$_{2}$, v$_{3}$} will represent all possible sets S, T such that in total the constructed graph can represent an exponential number of minimum cuts. 
 
 % ----------------------------------------------------------------
 % Answer ends
