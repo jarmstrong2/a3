@@ -48,8 +48,7 @@ and E is the edges that make up the network. Suppose we have sets S and T such t
 s $\in$ S, t $\in$ T, (S $\cup$ T) - \{s, t\} = V, and S $\cap$ T = $\emptyset$. Also, 
 suppose that for all possible arrangement of vertices in S and T, c(S, T) = f(S, T), which means that G(V, E) has an exponential number of minimum cuts between s and t.\\
 To construct a graph that is representative of there being 2$^{n}$ possible minimum cuts, a tree
-like structure seems appropriate since there are 2$^{n}$ leaves in a full tree with n nodes. Taking inspiration from Huffman encoding, we wish to have a graph that for each leaf in a full tree will represent a unique binary string that represents whether a vertex is in S or T. Suppose we arrange the the string as follows, v$_{1}$, ..., v$_{n}$, where if v$_{i}$ is in S then v$_{i}$ = 0
-and v$_{i}$ = 1 if it is in T.
+like structure seems appropriate since there are 2$^{n}$ leaves in a full tree for n levels in the tree. Taking inspiration from Huffman encoding, we wish to have a graph that for each leaf in a full tree will represent a unique binary string that represents whether a vertex is in S or T. Suppose we arrange the the string as follows, v$_{1}$, ..., v$_{n}$, where if v$_{i}$ is in S then v$_{i}$ = 0 and v$_{i}$ = 1 if it is in T. The tree/graph can be constructed so that each left edge appends 0 to the vertex string, and WLOG each right edge appends 1. Finally, when reaching any leaf we have an n length binary string that represents a unique cut S, T. In total there are 2$_{n}$ such possible cuts.\\ 
 
 % ----------------------------------------------------------------
 % Answer ends
