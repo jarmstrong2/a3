@@ -16,7 +16,7 @@
 % TODO: Enter the assignment number, your name, and your student number below
 % ----------------------------------------------------------------
 \AssignmentName{2}
-\QuestionCount{5}
+\QuestionCount{8}
 \StudentName{John Armstrong, Henry Ku}
 \StudentNumber{993114492\textbackslash g2jarmst, 998551348\textbackslash g2kuhenr}
 
@@ -43,66 +43,6 @@
 % TODO: Write your answer to the question below. 
 % ----------------------------------------------------------------
 
-\emph{\underline{Algorithm}}\\
-\begin{algorithm}[H]
- \LinesNumbered 
- \KwIn{An nxn matrix R such that R[i, j] represents the ratio r$_{ij}$, also R[i, j] = 0 where i = j.}
- \KwOut{\emph{True} if we end up with more of our favourite marbles from some friend x$_{i}$ after initiating a marbling cycle, \emph{False} otherwise.}
- D$^{(0)} = R$\;
- \For{k: 1 ... n}{
- Let D$^{(k)}$ = d$_{ij}^{(k)}$ be an nxn matrix\;
- \For{i: 1 ... n}{
- \For{j: 1 ... n}{
- \If{i = k}{
- d$_{ij}^{(k)}$ = d$_{ij}^{(k-1)}$
- }
- \Else{
- d$_{ij}^{(k)}$ = max(d$_{ij}^{(k-1)}$, d$_{ik}^{(k-1)}$ * d$_{kj}^{(k-1)}$)\;
- }
- \If{d$_{ij}^{(k)}$ * r$_{ji}$ \textgreater ~1}{
- return True\;
- }
- }
- }
- }
- return False\;
-\end{algorithm}
-\emph{\underline{Running Time}}\\
-\emph{Lines 2-16:} O(n$^{3}$) due to triple nested loop.\\
-\emph{All other lines:} O(1).\\
-\emph{\underline{Description}}\\
-The algorithm is an augmented version of Floyd-Warshall as presented 
-in CLRS. Because we do not know which series exchanges will give a 
-total product greater than one, it makes sense to use an all-pairs
-algorithm. However, instead of looking at each pass whether the
-length of the path between a pair of vertices could be made more 
-minimal we are looking for the a series of exchanges that connect
-two vertices where the product of exchanges can be maximized.\\
-Essentially the recursive definition is defined as follows:\\
-\[
-d_{ij}^{(k)} = 
-\begin{cases} 
-      \hfill r_{ij}    \hfill & \text{ if $k$ = 0} \\
-      \hfill max(d_{ij}^{(k-1)}, d_{ik}^{(k-1)} * d_{kj}^{(k-1)})\hfill & \text{ if $k$ $\geqslant$ 1} \\
-  \end{cases}
-\]\\
-At each update of d$_{ij}^{(k)}$ we perform d$_{ij}^{(k)}$ * r$_{ji}$. 
-If the result is greater than 1 then we have marbling cycle (cycle
- of exchanges) that is favourable. Thus True is returned. 
- False is returned if the algorithm cannot locate a favourable
- cycle.\\
-\emph{Proof}\\
-\textbf{Claim}\\ d$_{ij}^{(k)}$ is optimal for all k, and represents the optimal product of exchanges in a marbing cycle from friends x$_{i}$ to x$_{j}$ restricted to possible interexchanges between the set of friends \{1, 2, ..., k\}. If the algorithm encounters a beneficial marbling cycle (ie. d$_{ij}^{(k)}$ * r$_{ji}$ \textgreater ~1), during any iteration where k is incremented, the algorithm will return True. If, at the end of incrementations of k, no beneficial marbling cycles are found then False is returned.\\ 
-\textbf{Base Case}\\
-Suppose that k = 0, it follows that d$_{ij}^{(0)}$ = r$_{ij}$. It follows that  r$_{ij}$ *  r$_{ji}$ = 1 and thus no beneficial marbling cycle currently exists, and so d$_{ij}^{(0)}$ is optimal.\\
-\textbf{Induction Hypothesis}\\
- We wish to show d$_{ij}^{(k)}$ is optimal, then by strong induction, m \textless ~k, d$_{ij}^{(m)}$ is optimal, for our case assume that d$_{ij}^{(k - 1)}$ is available and optimal when restricted to friends in \{1, 2, ..., k - 1\}.\\
-\textbf{Induction Step}\\
-Assume that P$_{ij}$ is a partial marbling cycle (it does not yet include connection between j to i) and is optimal. P$_{ij}$ is a partial cycle with maximum product of exchange ratios and P${ij}$, not including i and j, is restricted to friends \{1, 2, ..., k\}. If in the contruction of P$_{ij}$ friend k was found to not increase the value of the product of ratios from x$_{i}$ to x${j}$, then P${ij}$ is the same partial marbling cycle as when restricted to including exchangew with friends \{1, 2, ..., k - 1\}. By induction hypothesis val(P$_{ij}$) = d$_{ij}^{(k - 1)}$. Thus it is optimal.\\
-However, suppose, when constructing P$_{ij}$, that friend k increased the value of the product of exchange ratios when he/she was added to the exchange from x$_{i}$ to x${j}$, then it follows that P$_{ij}$ will be the concatenation of partial cycles P$_{ik}$ and P$_{kj}$. All friends used in the series of exchanges P$_{ik}$ and P$_{kj}$, not including i, j and k, must be taken from the set \{1, 2, ..., k - 1\}. Thus, both partial cycles are restricted to the set of friends \{1, 2, ..., k - 1\}. Note that both P$_{ik}$ and P$_{kj}$ are optimal or else P$_{ij}$ could not be optimal. Thus, by induction hypothesis, val(P$_{ik}$) = d$_{ik}^{(k - 1)}$ and val(P$_{kj}$) = d$_{kj}^{(k - 1)}$, and so val(P$_{ij}$) = val(P$_{ik}$) * val(P$_{kj}$) = d$_{ik}^{(k - 1)}$ * d$_{kj}^{(k - 1)}$. \\
-The definition of the algorithm picks whichever of the two cases is maximum then  d$_{ik}^{(k)}$ must optimal, as both cases produce optimal results. From this, at every update to d$_{ij}^{(k)}$, we check whether a complete marbling cycle, represented by d$_{ij}^{(k)}$ * r$_{ij}$, is beneficial. If d$_{ij}^{(k)}$ * r$_{ij}$ \textgreater ~1 True is returned. Because d$_{ij}^{(k)}$ is optimal for all k $\leqslant$ n, if d$_{ij}^{(k)}$ * r$_{ij}$ is always less than or equal to 1, for all i and j, it follows that a beneficial marbling cycles can not exist between the group of n friends.\\
-$\blacksquare$\\
-
 % ----------------------------------------------------------------
 % Answer ends
 % ----------------------------------------------------------------
@@ -112,82 +52,6 @@ $\blacksquare$\\
 % ----------------------------------------------------------------
 % TODO: Write your answer to the question below. 
 % ----------------------------------------------------------------
-
-\emph{\underline{Algorithm}}\\
-\begin{algorithm}[H]
- \LinesNumbered 
- \KwIn{A list of jobs J = \{(T$_{1}$, O$_{1}$), ..., (T$_{n}$, O$_{n}$)\} where (T$_{i}$ and O$_{i}$ are both jobs during the same timeslot)}
- \KwOut{A sequence S of n locations that maximizes v(S), where location i represents the clinic you will work at during month i and v(S) is the total value of your savings}
-G(V,E)\;
-G.V = \{T$_{1}$, ..., T$_{n}$\} $\cup$ \{O$_{1}$, ..., O$_{n}$\} $\cup$ \{start, end\} \#start is start vertex and end is end vertex \;
-\# let w be the weight function.\\
-\# To get a path with largest income all income weights are made negative because DAG-SHORTEST-PATH looks for shortest path.\\
-\# let T$_{i}$.pay and O$_{i}$.pay be value of pay for location T or O on month i\\
-G.addEdge(start, T$_{1}$)\;
-w(start,T$_{1}$) = -(T$_{1}$.pay)\;
-G.addEdge(start, O$_{1}$)\;
-w(start,O$_{1}$) = -(O$_{1}$.pay)\;
-\For{i: 1 ... n - 1}{
-G.addEdge(T$_{i}$, T$_{i+1}$)\;
-w(T$_{i}$,T$_{i+1}$) = -(T$_{i+1}$.pay)\;
-G.addEdge(O$_{i}$, O$_{i+1}$)\;
-w(O$_{i}$, O$_{i+1}$) = -(O$_{i+1}$.pay)\;
-G.addEdge(T$_{i}$, O$_{i+1}$)\;
-w(T$_{i}$,O$_{i+1}$) = -(O$_{i+1}$.pay - move\_fee)\;
-G.addEdge(O$_{i}$, T$_{i+1}$)\;
- w(O$_{i}$,T$_{i+1}$) = -(T$_{i+1}$.pay - move\_fee)\;
-}
-G.addEdge(T$_{n}$, end)\;
-w(T$_{n}$, end) = 0\;
-G.addEdge(O$_{n}$, end)\;
-w(O$_{n}$, end) = 0\;
- \# Using the DAG-SHORTEST-PATHS algorithm in CLRS Chap 24.2 \\
-DAG-SHORTEST-PATHS(G,w, start)\;
-S=[]\;
-return ShortPath(G, start, end, S=[])\;
-\end{algorithm}
-
-\LinesNumbered
-\begin{algorithm}[H]
- \SetKwFunction{ShortPath}{ShortPath}
- \SetKwProg{myprocone}{}{}{}
- \myprocone{\ShortPath{G, start, end, S}}{
-\If {end == start  \# when we finish making the path}{
-S.prepend(start) \#add the vertex to start of the S sequence\;
-\# return S but remove "start" and "end" vertices from S\\
-return (S[1: -1])}
-\ElseIf{end.parent == NIL \# no path available}{
-return [];
-}
-\Else{
-S.prepend(end)\;
-ShortPath(G,start, end.parent, S)\;
-}}
-\end{algorithm}
-
-\emph{\underline{Description}}\\
-The algorithm establishes a graph with a start and end vertices along with all T$_{i}$ and O$_{i}$, 0 \textless ~i $\leqslant$ n.\\
-The start vertex connects to T$_{1}$ with an edge, and O$_{1}$ with another edge, and a weight that represents income of working at T or O, during the first month, respectively.\\
-The end vertex connects to T$_{n}$ with an edge, and O$_{n}$ with another edge. Both edge weights are 0, as the end vertex will be used in to establish the shortest path from start to end.\\
-Each vertex T$_{i}$ will connect to T$_{i+1}$ vertex with an edge of weight that is the income of working at T for month i + 1. Vertex T$_{i}$ will also connect to O$_{i+1}$ with the income of working at O during the month i + 1 minus the cost of the move.\\
-Similarly, each vertex O$_{i}$ will connect to O$_{i+1}$ vertex with an edge of weight that is the income of working at O for month i + 1. Vertex O$_{i}$ will also connect to T$_{i+1}$ with the income of working at T during the month i + 1 minus the cost of the move.\\
-It must be kept in mind that before assigning an edge weight we multiply the income value by -1. Because DAG-SHORTEST-PATHS algorithm only finds the shortest path, therfore the shortest path in G will also represent the sequence of locations that will give us the most money for n months.\\
-Then with this graph we use the procedure Short-Path to generate the sequence of jobs that are optimal.\\
-ShortPath is based on chap 22.2 Print-Path algorithm\\
-\emph{\underline{Running Time}}\\
-\emph{lines 10-19} are O(n)\\
-\emph{line 25} is using DAG-SHORTEST-PATHS takes O(n+e) where n is number of vertices, and e is number of edges and since the number of edges e is 4*(n-1)+4 (4 being the edges going out from start and entering end, and 4*(n-1) being the number of edges between T$_{i}$'s and O$_{i}$'s for n months). Thus, it is O(n+n) = O(n). \\
-\emph{line 27} uses the Short Path algorithm and it takes O(n) for the number of n vertices\\
-All other lines are O(1).\\
-So the algorithm is bounded by O(n) \\
-\emph{\underline{Proof}}\\
-\textbf{Claim}\\
-The algoirthm returns a schedule S such that the accumulated income of working each months at either T or O will be maximum.\\
-\textbf{Proof}\\
-By theorem 24.5 in CLRS it has been proven that any graph G(V, E, w) (without cycles), including start and end vertices in G, when used as an input for DAG-SHORTEST-PATHS will update graph G where, for each vertex i $\in$ V, we can construct a shortest path between start and i, by back tracking like so, i $\rightarrow$ i.parent $\rightarrow$ ... $\rightarrow$ start.\\
-By the construction of our graph as provided in the description, it is clear that no cycles exist as all edges point in the direction of end, and so it is not possible to revisit vertices along any path. Thus, we can be sure that DAG-SHORTEST-PATHS will execute as expected and the path between vertices start and end will be the shortest (ie. have a maximum income since all weights represent income but as negative values).\\
-Attempting to establish a contradiction, suppose that our algorithm returns S and val(S) is not the maximum income possible based on given locations in S. This would mean that there is some sequence S' such that val(S') is the maximum income. But this would mean that the path between start and end, after running DAG-SHORTEST-PATHS on G, is not the shortest (ie. (largest income) * -1). But this contradicts theorem 24.5 that DAG-SHORTEST-PATHS returns the subgraph of shortest-paths. Thus val(S) must be maximum income possible.\\
-$\blacksquare$\\
 
 % ----------------------------------------------------------------
 % Answer ends
@@ -199,76 +63,6 @@ $\blacksquare$\\
 % TODO: Write your answer to the question below. 
 % ----------------------------------------------------------------
 
-\emph{\underline{Algorithm}}\\
-\begin{algorithm}[H]
- \LinesNumbered 
- \KwIn{A list L = \{x$_{1}$, x$_{2}$, ..., x$_{n}$\} where x$_{i}$ is the amount of patients at i$^{th}$ time, and given the function f(j), where the function returns the amount of dosage recharged when charging for j minutes}
- \KwOut{maximum number of patients able to cure patcount}
-let w be the weight function\;
-\# To get a path with largest amount of patients saved all patients weights are made negative because DAG-SHORTEST-PATH looks for shortest path.\\
-\# let x$_{i}$.patient be the number value of patient at times i\\
-\# let every edge be the number of patients we can save with regards to how many shots we currently recharged\\
-G(V,E)\;
-G.V = \{x$_{1}$, ..., x$_{n}$\} $\cup$ \{x$_{0}$\} \#x$_{0}$ is start vertex\;
-
-\For{i: 0...n-1}{
-\For{j: i+1...n}{
-	G.addEdge(x$_{i}$, x$_{j}$)\;
-	w(x$_{i}$, x$_{j}$) = -min(x$_{j}$.patient, f(j-i))\;
-}
-}
- \# Using the DAG-SHORTEST-PATHS algorithm in CLRS Chap 24.2 \\
-DAG-SHORTEST-PATHS(G,w, x$_{0}$)\;
-patcount = 0\;
-return ShortPath(G, x$_{0}$, x$_{n}$, patcount)\;
-\end{algorithm}
-
-
-\LinesNumbered
-\begin{algorithm}[H]
- \SetKwFunction{ShortPath}{ShortPath}
- \SetKwProg{myprocone}{}{}{}
- \myprocone{\ShortPath{G, start, end, patcount}}{
-\If {end == start  \# when we finish making the path}{
-return patcount * -1}
-\ElseIf{end.parent == NIL \# no path available}{
-return 0;
-}
-\Else{
-patcount += w(end.parent, end)\;
-ShortPath(G,start, end.parent, patcount)\;
-}}
-\end{algorithm}
-
-
-\emph{\underline{Description}}\\
-The algorithm sets up the question by establishing a graph with a start vertex. \\
-The start vertex x$_{0}$ connects to every other vertices from x$_{1}$ to x$_{n}$ with an edge.\\
-The end vertex is x$_{n}$.\\
-Each vertices x$_{i}$ will connect to every other vertices  x$_{j}$ where j is \textgreater i \\ 
-Each edges has the weight value of -min(x$_{j}$.patient, f(j-i)), where it takes the negative minimum of either the destination vertex value or the gun recharge value \\
-The edges are negative as DAG-SHORTEST-PATH looks for shortest path, and making them negative we can instead look for the longest path\\
- Then we uses the DAG-SHORTEST-PATHS algorithm to find the shortest path which in this case will maximize the number of patients we can save\\
-Then with the graph we use Short-Path to go through the path graph and find out the number of the patients we can save and save the value into patcount\\
-ShortPath is based on chap 22.2 Print-Path algorithm\\
-
-\emph{\underline{Running Time}}\\
-\emph{lines 7-12 } are O(n$^{2}$) due to the nested double for loop \\
-\emph{lines 14} is using DAG-SHORTEST-PATHS takes O(n+e) where n is number of vertices, and e is number of edges and since the number of edges e is $\sum_{i = 1}^{n}$ i = $\frac{n * (n + 1)}{2}$ therefore it is bounded by O(n$^{2}$). Thus, it is O(n$^{2}$). \\
-\emph{line 16} uses the Short Path algorithm and it takes O(n) for the number of n vertices\\
-All other lines are O(1).\\
-So the algorithm is bounded by O(n$^{2}$) \\
-
-\emph{\underline{Proof}}\\
-\textbf{Claim}\\
-The algoirthm returns the maximum patient saved: patcount.\\
-  
-\textbf{Proof}\\
-By theorem 24.5 in CLRS it has been proven that any graph G(V, E, w) (without cycles), including start and end vertices in G, when used as an input for DAG-SHORTEST-PATHS will update graph G where, for each vertex i $\in$ V, we can construct a shortest path between start and i, by back tracking like so, i $\rightarrow$ i.parent $\rightarrow$ ... $\rightarrow$ start.\\
-By the construction of our graph as provided in the description, it is clear that no cycles exist as all edges point in the direction of end, and so it is not possible to revisit vertices along any path. Thus, we can be sure that DAG-SHORTEST-PATHS will execute as expected and the path between vertices start and end will be the shortest (ie. have a maximum amount of patients saved, since all weights represent number of patients that can be saved, but as negative values).\\
-Attempting to establish a contradiction, suppose that our algorithm returns patcount is not the maximum number of patient saved based on the updated graph with the shortest path S. This would mean that there is some path S' such that patcount with path S' is the maximum number of patients saved. But this would mean that the path between start and end, after running DAG-SHORTEST-PATHS on G, is not the shortest (ie. (max patients saved) * -1). But this contradicts theorem 24.5 that DAG-SHORTEST-PATHS returns the subgraph of shortest-paths. Thus patcount with Path S must be the maximum number of patients saved.\\
-$\blacksquare$\\
-
 % ----------------------------------------------------------------
 % Answer ends
 % ----------------------------------------------------------------
@@ -278,67 +72,6 @@ $\blacksquare$\\
 % ----------------------------------------------------------------
 % TODO: Write your answer to the question below. 
 % ----------------------------------------------------------------
-
-\emph{\underline{Algorithm}}\\
-\begin{algorithm}[H]
- \LinesNumbered 
- \KwIn{A list \emph{A} of n houses and a list \emph{B} of m hospitals, where every house and hospital is represented by a pair (x, y) on the plane, and s and t}
- \KwOut{"Good" if each household has access to ahospital under the restrictions listed in the question, and "Eeek" otherwise.}
- \# Empty graph\;
- G(V, E)\;
- G.V = A $\cup$ B $\cup$ \{ T, S \} \;
- \For{i: 1 ... m}{
- G.addEdge(B[i], T)\;
- G.capacity(B[i], T) = t\
- }
- \For{j: 1 ... n}{
- G.addEdge(S, A[j])\;
- G.capacity(S, A[i]) = 1\;
- }
- \For{i: 1 ... m}{
- \For{j: 1 ... n}{
- \# d(u, v) is a distance function\;
- \If{d(A[j], B[i]) $\leqslant$ s}{ 
-    G.addEdge(A[j], B[i])\; 
-    G.capacity(A[j], B[i]) = 1\;
- }
- }
- } 
-  \# Using the algorithm in CLRS Chap 26.2 with the assumptions that max flow for network G is returned\;
- maxFlow = FordFulkerson(G, S, T)\;
- \If{maxFlow = length(HS)}{
- return 'Good'\;
- }
- \Else{
- return 'Eeek!'\;
- }
- 
-\end{algorithm}
-\emph{\underline{Description}}\\
-The solution is to firstly generate a bipartite graph.
-This involves firstly iteratively connecting nodes i from A (houses) with an edge to node(s) j from B (hospitals) only if  d(i, j) $\leqslant$ s. Each of these edges is assigned c(i, j) = 1. From the bipartite graph we add two vertices S, the source, T, the sink, and make the edges in all (i, j) directed from i to j. S is connected to each node i in A by directed edge (S, i), also c(S, i) = 1. Also, each node j in B is connected to T by directed edge (j, T), and c(j, T) = t (the maximum number of houses a hospital can deal with). We then produce the maximum flow value by executing the Ford Fulkerson algorithm on the graph. If the maximum flow returned equals n, the number of houses, this means that there are an adaquate number of hospitals in the area.\\
-\\
-\\
-\emph{\underline{Running Time}}\\
-\emph{Lines 3 - 6:} O(m)\\
-\emph{Lines: 7 - 10:} O(n)\\
-\emph{Lines: 11 - 19:} O(mn)\\
-\emph{Line 21:} Normally, Ford Fulkerson algorithm is O(E $\mid$f*$\mid$) (CLRS p. 725). In this case $\mid$f*$\mid$, the largest possible max flow, is n, the maximum number of houses. From our constructed bipartite graph, E = (all edges connected to S) + (all edges connected to T) + (all edges between houses and hospitals) $\leqslant$ O(n) + O(m) + O(mn), so E $\leqslant$ O(mn). Therefore line 23 is O(mn$^{2}$). \\
-It follows that the algorithm is dominated by O(mn$^{2}$).\\
-\\
-\emph{\underline{Proof}}\\
-\textbf{Claim}\\
-If the data given is such that all hospitals in B can accomodate the houses in A, then the 
-algorithm returns the correct response, "Good". However, if there are too many
-houses for the hospitals to deal with the algorithm returns "Eeek!". Thus, using a network 
-flow as a representation of the data and as a method to determine our results, in each case,
-we will receive an accurate outcome.\\
-\textbf{Proof}\\
-Suppose we have sets of A and B and we construct a bipartite graph with vertices i $\in$ A and j $\in$ B, and we form edges (i, j) and c(i, j) = 1 only when d(i, j) $\leqslant$ s. Then assume that a network flow is created in the same manner as described in the description above.\\
-\emph{Case 1:} Suppose we know beforehand that the houses in A can be accomodated by the hospitals in B. In maximum flow, when the residual graph has no more augmenting paths, it would follow that in the network graph, for each house vertex i, there would be a path that passes through i, and some hospital vertex j, such that S $\rightarrow$ i $\rightarrow$ j $\rightarrow$ T. In constructing the network we have c(S, i) = 1, c(i, j) = 1, and c(j, T) = t. It would follow that for all i and some j, f(S, i) = f(i, j) = 1 and f(j, T) $\leqslant$ t \textemdash ~because we know for a fact that there are enough hospitals in the area for the houses, therefore flow within every i exists. If we cut anywhere within the maximum flow representation of the network \textemdash ~where we have sets where the source is seperated from the sink \textemdash ~then the summation of outgoing and incoming edge weights, by law of conservation, will be $\mid$A$\mid$. Therefore, as expected, string "Good" will be returned.\\    
-\emph{Case 2:} Suppose instead that we know there are not enough hospitals in B for houses in A. It would follow either that (1) the number of houses is greater than the number of hospitals or (2) that some/all houses are not in the vacinity of any hospitals. Indeed, if we have (2) then the flow network graph, by the nature of construction, for some house i would have no edges to any hospitals j, thus no flow could pass from this i to a j, and so the lack of flow would illustrate that no hospital could accomodate i. To illustrate (1), suppose we have some house i, that is connected (near) to hospitals {j$_{0}$, ..., j$_{k}$}, k $\leqslant$ $\mid$B$\mid$. So, for any j$_{l}$, l $\in$ k, in the network flow there would exist a path S $\rightarrow$ i $\rightarrow$ j$_{l}$ $\rightarrow$ T. Then maximum flow along any of these paths would be such that f(S, i) = f(i, j$_{l}$) = 0 and f(j$_{l}$, T) = t. Specifically, flow from hospitals j$_{l}$ to the sink T must be at capacity t if it cannot accomodate house i, and f(S, i) and f(i, j$_{l}$) indicates that the hospital cannot handle i. It would follow that in both (1) and/or (2) that maximum flow would be less than $\mid$A$\mid$ because it has been shown that flow cannot exists between all houses and all hospitals. Therefore, as expected, string "Eeek!" will be returned.\\ 
-By the explanation of cases 1 and 2 it must follow that in both circumstances the agorithm can accurately determine if a group of houses can be handled by a group of hospitals. Therefore the algorithm must be optimal.        
-\\
     
 % ----------------------------------------------------------------
 % Answer ends
@@ -350,88 +83,41 @@ By the explanation of cases 1 and 2 it must follow that in both circumstances th
 % TODO: Write your answer to the question below.                                                                                                 
 % ----------------------------------------------------------------                                                                               
 
-\emph{\underline{Algorithm}}\\
-\begin{algorithm}[H]
- \LinesNumbered 
-\SetKwFunction{modFordFulkerson}{modFordFulkerson}
- \KwIn{A list of job objects J = \{(t$_{1}$, c$_{1}$), ..., (t$_{k}$, c$_{k}$)\} and a list of people/staff objects P = \{(p$_{1}$, h$_{1}$, S$_{1}$), ..., (p$_{n}$, h$_{n}$, S$_{n}$)\}}
- \KwOut{If all tasks can be completed return a list of jobs each p$_{i}$ will have to complete, otherwise return false.}
-\# Empty graph\\
-G(V, E)\;
-G.V = \{t$_{1}$, ..., t$_{k}$\} $\cup$ \{p$_{1}$, ..., p$_{n}$\} $\cup$ \{t, s\}\;
-\For{i: 1 ... k}{
-G.addEdge(t$_{i}$, T)\;
-G.capacity(t$_{i}$, T) = c$_{i}$\;
-\For{j: 1 ... n}{
-G.addEdge(p$_{j}$, t$_{i}$)\;
-G.capacity(p$_{j}$, t$_{i}$) = h$_{j}$\;
-}
-}
-\For{j: 1 ... n}{
-G.addEdge(S, p$_{j}$)\;
-G.capacity(S, p$_{j}$) = h$_{j}$\;
-}
-(f, maxFlow) = \modFordFulkerson{G}\; 
-\If{$\sum_{i = 1}^{k}$ c$_{i}$ = maxFlow(ie. if all tasks can be completed)}{
-\ForEach{edge (u, v) in G}{
-	\If{(u is a person and v is a task) and f(u, v) $\geqslant$ 1}{
-		Get S$_{i}$ corresponding to u and add task v to S$_{i}$
-	}
-}
-return P\;
-}
-\Else{
-return False\;
-} 
-\end{algorithm}
-
-\LinesNumbered 
-\begin{algorithm}[H]
- \SetKwFunction{modFordFulkerson}{modFordFulkerson}
- \SetKwProg{myproc}{}{}{}
- \myproc{\modFordFulkerson{G}}{
-\# will contain all maxflow values of edges in G\;
-f = new flow object\;
-\ForEach{edge (u, v) $\in$ E} {
-	f(u, v) = 0\;
-}
-\While{there exists a path p from S to T in the residual network G$_{f}$}{
-c$_{f}$(p) = min \{c$_{f}$(u, v) : (u, v) is in p\}
-\ForEach{edge (u, v) in p}{
-\If{(u, v) $\in$ E}{
-f(u, v) = f(u, v) + c$_{f}$(p)\;
-}
-\Else{
-f(v, u) = f(v, u) - c$_{f}$(p)\;
-}
-}
-}
-\# maxFlow the maximum flow as calculated and returned in the original Ford-Fulkerson\\
-return (f, maxFlow)\;
-}
-\end{algorithm}
-
-\emph{\underline{Proof of Correctness}}\\
-\textbf{Precondition}\\
-List of Job objects J = \{(t$_{1}$, c$_{1}$), ..., (t$_{k}$, c$_{k}$)\} where t$_{i}$ is a task and c$_{i}$ is the time needed to complete the task. List of people/staff objects P = \{(p$_{1}$, h$_{1}$, S$_{1}$), ..., (p$_{n}$, h$_{n}$, S$_{n}$)\}, where p$_{i}$ is a person, h$_{i}$ is the number of hours available to work for that person, and S$_{i}$ is an empty task list.\\
-\\
-\textbf{Postcondition}\\
-\emph{Case 1 Not all tasks can be completed:} False value is returned.\\
-\emph{Case 2 All tasks can be completed:} all S$_{i}$'s are updated to include name(s) of task(s) that p$_{i}$ participate(s) in. The updated P is returned.\\ 
-\\
-\textbf{Precondition $\implies$ Postcondition}\\ 
-Assume the precondition holds. Using these values in J and P construct a bipartite graph where each p$_{i}$ has an edge aonnected to t$_{j}$, j $\in$ k (number of jobs). Once the bitpartite graph is constructed, add vertices S, a source, and T, a sink. Additionally, make each edge (p$_{i}$, t$_{j}$) directed, so that it exits p$_{i}$ and enters  t$_{j}$, also set c(p$_{i}$, t$_{j}$) = h$_{j}$. Make directed edges (S, p$_{i}$) with c(S, p$_{i}$) = h$_{j}$, and (t$_{j}$, T) with c(t$_{j}$, T) = c$_{j}$. Thus, we have a network flow that represents all possible ways a person could be assigned to the tasks given in J (lines 1 - 15). \\
-Executing a modified Ford-Fulkerson procedure on this graph will produce a representation of maximum flow within the network. To see that a maximum flow in this graph represents tasks in a given day consider the following. Look at a flow path from S to a person, its capacity is the maximum number of hours this person can work. Similarly, for any task to T, the capacity is the necessary hours to complete the task. With edges in the original graph, from a person to each task, the number of hours a person can work limits the number of edges to a task that can have a flow greater than 0. Also, the number of hours of work that enter a task, by one or more people, is limited by the capacity of the edge between a task and vertex T. \\
-If the maximum flow, returned by Ford-Fulkerson, does not equal $\sum_{i = 1}^{k}$ c$_{i}$ we return False. Clearly, not all tasks can be completed, and the postcondition holds for Case 1 (lines 25 - 27). Using the 'flow object' return for the modified Ford-Fulkerson, make a cut in the maximum flow representation of this graph between people vertices (u) and task vertices (v). Each person vertex corresponds to some p$_{i}$ in P, thus for any (u, v) where f(u, v) $\geqslant$ 1, find p$_{i}$ = u and then add task v to S$_{i}$. After updating all relevant S$_{i}$ return P, thus the postcondition holds for Case 2 (lines 17 - 24).\\
-\\
-\textbf{Termination}\\
-Termination of the algorithm rests upon the completion of the Ford-Fulkerson procedure. Once there are no more augmenting paths from S to T  Ford-Fulkerson terminates. This is guarenteed to occur since the maimum flow is limited to $\sum_{i = 1}^{k}$ c$_{i}$ (by capacities edges from tasks to T), and each augmentation in Ford-Fulkerson increases flow by at least 1 unit. Additionally, Edmonds-Karp algorithm could be used, so termination would also be guaranteed. It follows that the algorithm must terminate as all other procedures are single iteration or for loops, which are guaranteed to complete given finite number of tasks and people.\\
-$\blacksquare$\\    
-
 % ----------------------------------------------------------------                                                                               
 % Answer ends                                                                                                                                    
 % ---------------------------------------------------------------- 
 
 
+\newpage
+\item[Q6.]
+% ----------------------------------------------------------------                                                                               
+% TODO: Write your answer to the question below.                                                                                                 
+% ----------------------------------------------------------------                                                                               
+
+% ----------------------------------------------------------------                                                                               
+% Answer ends                                                                                                                                    
+% ----------------------------------------------------------------
+
+
+\newpage
+\item[Q7.]
+% ----------------------------------------------------------------                                                                               
+% TODO: Write your answer to the question below.                                                                                                 
+% ----------------------------------------------------------------                                                                               
+
+% ----------------------------------------------------------------                                                                               
+% Answer ends                                                                                                                                    
+% ----------------------------------------------------------------
+
+
+\newpage
+\item[Q8.]
+% ----------------------------------------------------------------                                                                               
+% TODO: Write your answer to the question below.                                                                                                 
+% ----------------------------------------------------------------                                                                               
+
+% ----------------------------------------------------------------                                                                               
+% Answer ends                                                                                                                                    
+% ----------------------------------------------------------------
 \end{description}
 \end{document}
