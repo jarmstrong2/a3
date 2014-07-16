@@ -113,18 +113,18 @@ Using the fact provided in the question, all that is necessary to show that f is
 submodular is to show that for any two subsets A, B $\subseteq$ V, \mbox{f(A) + 
 f(B) $\geqslant$ f(A $\cup$ B) + f(A $\cap$ B)}.\\
 
-We begin by establishing a fact. Suppose you have disjoint sets X, Y $\subseteq$ V.
-Now suppose in sets X and Y each have a selection of m + n vertices in 
-G(V, E). In X, there are m vertices that appear in edges in G(V, E), these m are 
-startpoints of edges. In Y there are n vertices that that appear in edges in G(V, E) and are startpoints. However, in X there are n vertices that are the endpoints to all edges with m startpoints in Y, similarly for Y but m vertices endpoints to X's m startpoints. Indeed, f(X $\cup$ Y) = 0, as this has been designed such that there are no edges (u, v) such that u $\in$ (X $\cup$ Y), and v $\in$ V$\backslash$(X $\cup$ Y). In this case, it follows that \mbox{f(X) + f(Y) $\textgreater$ f(X $\cup$ Y)}. Now suppose we remove from X the n endpoint vertices, and
-from Y remove the m endpoints. It would then follow that \mbox{f(X) + f(Y) = f(X $\cup$ Y)}. Each of these cases represent the extreme scenarios, and we can conclude that 
-\mbox{f(X) + f(Y) $\geqslant$ f(X $\cup$ Y)}.\\
+We begin by establishing a fact. Suppose you have disjoint sets X$_{1}$, X$_{2}$, ..., X$_{k}$  $\subseteq$ V, k \textgreater ~1. \\
+\underline{Case 1:} Assume that in each X$_{i}$ the set of vertices can be divided into two sets, those that exist as startpoints of edges in E and those that exist as endpoints in E. 
+However, $\forall$ u $\in$ X$_{i}$, $\nexists$ v $\in$ X$_{i}$ such that (u, v) $\in$ E. It follows that f(X$_{i}$) $\geqslant$ 0. Additionally, suppose that $\forall$ u $\in$ X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$ X$_{k}$, $\exists$ v $\in$ X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$  X$_{k}$, such that (u, v) $\in$ E. It follows that f(X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$  X$_{k}$) = 0, and so \mbox{f(X$_{1}$) + f(X$_{2}$) + ... + f(X$_{k}$) $\geqslant$ f(X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$  X$_{k}$).}\\
+\underline{Case 2:} Assume that $\forall$ u $\in$ X$_{i}$ $\nexists$ v $\in$ X$_{j}$, such that (u, v) $\in$ E. Also, i $\neq$ j and 1 $\geqslant$ i, j $\geqslant$ k. So, it would follow that \mbox{f(X$_{1}$) + f(X$_{2}$) + ... + f(X$_{k}$)} = \mbox{f(X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$  X$_{k}$).}\\ 
 
-Now, suppose we have some arbitrary subsets A, B $\subseteq$ V. Indeed it is possible to seperate both A and B as follows. Let A' represent all vertices that do not appear in B from set A, and let A'' be those vertices that do appear in B. Similarly, Let B' represent all vertices that do not appear in A from set B, and let B'' be those vertices that do appear in A. Then, \mbox{f(A) + f(B) = f(A') + f(A'') + f(B') + f(B'')}. Clearly, \mbox{A'' = B'' = (A $\cap$ B)}, then \mbox{f(A) + f(B) = (f(A') + f(A $\cap$ B) + f(B')) + f(A $\cap$ B)}. By the fact proven above, \mbox{(f(A') + f(A $\cap$ B) + f(B')) $\geqslant$ f(A' $\cup$ (A $\cap$ B) $\cup$ B').} However, \mbox{(A' $\cup$ (A $\cap$ B) $\cup$ B') = (A $\cup$ B)}. Finally, \\f(A) + f(B) = (f(A') + f(A $\cap$ B) + f(B')) + f(A $\cap$ B) $\geqslant$ f(A $\cup$ B) + f(A $\cap$ B). \\
+Both Case 1 and Case 2 represent the least ideal and most ideal cases, respectively. It follows that in all cases the function f on the union of any series of disjoint subsets of V will result in a value less than or equal to the summation of values of f operating on each subset seperately, thus, \mbox{f(X$_{1}$) + f(X$_{2}$) + ... + f(X$_{k}$) $\geqslant$ f(X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$  X$_{k}$).}\\
+
+Now, suppose we have some arbitrary subsets A, B $\subseteq$ V. Indeed, it is possible to seperate both A and B as follows. Let A' represent all vertices from A that do not appear in B, and conversely let A'' be those vertices that do appear in both A and B. Similarly, Let B' represent all vertices from B that do not appear in A, and let B'' be those vertices that appear in A and B. Then, \mbox{f(A) + f(B) = f(A') + f(A'') + f(B') + f(B'')}. Clearly, \mbox{A'' = B'' = (A $\cap$ B)}, then \mbox{f(A) + f(B) = (f(A') + f(A $\cap$ B) + f(B')) + f(A $\cap$ B)}. It follows by our construction of A' and B' that the sets A', (A $\cap$ B), and B' are disjoint. Then using the fact proven above, \mbox{(f(A') + f(A $\cap$ B) + f(B')) $\geqslant$ f(A' $\cup$ (A $\cap$ B) $\cup$ B').} However, \mbox{(A' $\cup$ (A $\cap$ B) $\cup$ B') = (A $\cup$ B)}. Finally, \\f(A) + f(B) = (f(A') + f(A $\cap$ B) + f(B')) + f(A $\cap$ B) $\geqslant$ f(A $\cup$ B) + f(A $\cap$ B). \\
 
 Indeed, \mbox{f(A) + f(B) $\geqslant$ f(A $\cup$ B) + f(A $\cap$ B)} implies that function f,
 such that f(S) is the number of edges \mbox{(u, v)} with u $\in$ S, v $\in$ V$\backslash$S, is 
-submodular, by definition of submodular functions.
+submodular, by the equivalence of submodular functions.
  
 
 % ----------------------------------------------------------------
