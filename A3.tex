@@ -113,19 +113,32 @@ Using the fact provided in the question, all that is necessary to show that f is
 submodular is to show that for any two subsets A, B $\subseteq$ V, \mbox{f(A) + 
 f(B) $\geqslant$ f(A $\cup$ B) + f(A $\cap$ B)}.\\
 
-We begin by establishing a fact. Suppose you have disjoint sets X$_{1}$, X$_{2}$, ..., X$_{k}$  $\subseteq$ V, k \textgreater ~1. \\
-\underline{Case 1:} Assume that in each X$_{i}$ the set of vertices can be divided into two sets, those that exist as startpoints of edges in E and those that exist as endpoints in E. 
-However, $\forall$ u $\in$ X$_{i}$, $\nexists$ v $\in$ X$_{i}$ such that (u, v) $\in$ E. It follows that f(X$_{i}$) $\geqslant$ 0. Additionally, suppose that $\forall$ u $\in$ X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$ X$_{k}$, $\exists$ v $\in$ X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$  X$_{k}$, such that (u, v) $\in$ E. It follows that f(X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$  X$_{k}$) = 0, and so \mbox{f(X$_{1}$) + f(X$_{2}$) + ... + f(X$_{k}$) $\geqslant$ f(X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$  X$_{k}$).}\\
-\underline{Case 2:} Assume that $\forall$ u $\in$ X$_{i}$ $\nexists$ v $\in$ X$_{j}$, such that (u, v) $\in$ E. Also, i $\neq$ j and 1 $\geqslant$ i, j $\geqslant$ k. So, it would follow that \mbox{f(X$_{1}$) + f(X$_{2}$) + ... + f(X$_{k}$)} = \mbox{f(X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$  X$_{k}$).}\\ 
-
-Both Case 1 and Case 2 represent the least ideal and most ideal cases, respectively. It follows that in all cases the function f on the union of any series of disjoint subsets of V will result in a value less than or equal to the summation of values of f operating on each subset seperately, thus, \mbox{f(X$_{1}$) + f(X$_{2}$) + ... + f(X$_{k}$) $\geqslant$ f(X$_{1}$ $\cup$ X$_{2}$ $\cup$ ... $\cup$  X$_{k}$).}\\
-
-Now, suppose we have some arbitrary subsets A, B $\subseteq$ V. Indeed, it is possible to seperate both A and B as follows. Let A' represent all vertices from A that do not appear in B, and conversely let A'' be those vertices that do appear in both A and B. Similarly, Let B' represent all vertices from B that do not appear in A, and let B'' be those vertices that appear in A and B. Then, \mbox{f(A) + f(B) = f(A') + f(A'') + f(B') + f(B'')}. Clearly, \mbox{A'' = B'' = (A $\cap$ B)}, then \mbox{f(A) + f(B) = (f(A') + f(A $\cap$ B) + f(B')) + f(A $\cap$ B)}. It follows by our construction of A' and B' that the sets A', (A $\cap$ B), and B' are disjoint. Then using the fact proven above, \mbox{(f(A') + f(A $\cap$ B) + f(B')) $\geqslant$ f(A' $\cup$ (A $\cap$ B) $\cup$ B').} However, \mbox{(A' $\cup$ (A $\cap$ B) $\cup$ B') = (A $\cup$ B)}. Finally, \\f(A) + f(B) = (f(A') + f(A $\cap$ B) + f(B')) + f(A $\cap$ B) $\geqslant$ f(A $\cup$ B) + f(A $\cap$ B). \\
-
-Indeed, \mbox{f(A) + f(B) $\geqslant$ f(A $\cup$ B) + f(A $\cap$ B)} implies that function f,
-such that f(S) is the number of edges \mbox{(u, v)} with u $\in$ S, v $\in$ V$\backslash$S, is 
-submodular, by the equivalence of submodular functions.
- 
+Consider the set of edges in G(V, E), E = \{e$_{1}$, e$_{2}$, ..., e$_{n}$\}. If we think of f(S) as an iterative algorithm that goes through each e$_{i}$ $\in$ E and checks whether the startpoint of e$_{i}$ $\in$ S and whether the endpoint of e$_{i}$ $\in$ V$\backslash$S. Then we have f$_{e_{i}}$(S):\\
+\[
+ f_{e_{i}}(S) = 
+\begin{cases} 
+      \hfill 1 \hfill & \text{ if startpoint of e$_{i}$ in S and endpoint of e$_{i}$ in V$\backslash$S  } \\
+      \hfill 0 \hfill & \text{ otherwise} \\
+  \end{cases}
+\]\\
+And so, f(S) = $\sum_{i = 1}^{n}$ f$_{e_{i}}$(S). Suppose (u, v) is an arbitrary edge in E, also suppose A, B are some arbitrary subsets of V. We wish to show in all cases, however vertices u and v appear or do not appear in A and/or B, that \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)}:\\
+\hspace*{1cm}\parbox{16cm}{\underline{Case 1: u $\notin$ A and u $\notin$ B:}
+Clearly, u $\notin$ (A $\cup$ B) and u $\notin$ (A $\cap$ B), thus, f$_{(u,v)}$(A) = f$_{(u,v)}$(B) = f$_{(u,v)}$(A $\cup$ B) = f$_{(u,v)}$(A $\cap$ B) = 0. So, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
+\underline{Case 2: u $\in$ A and u $\notin$ B (W.L.O.G. swtiching B for A in this case and all subcases the claim holds):}\\
+\hspace*{1cm}\parbox{15cm}{\underline{Case 2.1: v $\in$ A:}
+Clearly, u, v $\in$ (A $\cup$ B) and u $\notin$ (A $\cap$ B), it follows that f$_{(u,v)}$(A) = f$_{(u,v)}$(B) = f$_{(u,v)}$(A $\cup$ B) = f$_{(u,v)}$(A $\cap$ B) = 0. So, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
+\underline{Case 2.2: v $\notin$ A and v $\in$ B:} So, f$_{(u,v)}$(A)  = 1 and f$_{(u,v)}$(B) = 0, but since u, v $\in$ (A $\cup$ B) and u $\notin$ (A $\cap$ B), then f$_{(u,v)}$(A $\cup$ B) = f$_{(u,v)}$(A $\cap$ B) = 0. So, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
+\underline{Case 2.3: v $\notin$ A and v $\notin$ B:} Again, f$_{(u,v)}$(A)  = 1 and f$_{(u,v)}$(B) = 0. Also, u $\in$ (A $\cup$ B) and v $\notin$ (A $\cup$ B), then f$_{(u,v)}$(A $\cup$ B) = 1.
+Again, u $\notin$ (A $\cap$ B), then f$_{(u,v)}$(A $\cap$ B) = 0. So, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
+}
+\underline{Case 3: u $\in$ A and u $\in$ B (W.L.O.G. swtiching B for A in this case and all subcases the claim holds):}\\
+\hspace*{1cm}\parbox{15cm}{\underline{Case 3.1: v $\in$ A and v $\in$ B:} Since u, v $\in$ A and B, then f$_{(u,v)}$(A) = f$_{(u,v)}$(B) = 0. Also, u, v $\in$ \mbox{(A $\cup$ B)} and (A $\cap$ B), then f$_{(u,v)}$(A $\cup$ B) = f$_{(u,v)}$(A $\cap$ B) = 0. So, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
+\underline{Case 3.2: v $\notin$ A and v $\in$ B:} It follows that f$_{(u,v)}$(A) = 1 and f$_{(u,v)}$(B) = 0. Since u, v $\in$ (A $\cup$ B) then f$_{(u,v)}$(A $\cup$ B) = 0, but u $\in$ 
+(A $\cap$ B) and v $\notin$ (A $\cap$ B), thus f$_{(u,v)}$(A $\cap$ B) = 1. Again, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
+\underline{Case 3.3: v $\notin$ A and v $\notin$ B:} Clearly, f$_{(u,v)}$(A) = 1 and f$_{(u,v)}$(B) = 1. Also, u $\in$ (A $\cup$ B) and (A $\cap$ B), but v $\notin$ (A $\cup$ B) and (A $\cap$ B), then f$_{(u,v)}$(A $\cup$ B) = f$_{(u,v)}$(A $\cap$ B) = 1. Then, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.
+}
+}\\
+In all cases in which the vertices of some edge (u, v) $\in$ E might appear in A, B $\subseteq$ V it has been shown that \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds. It must follow then that \mbox{$\sum_{i = 1}^{n}$ f$_{e_{i}}$(A) + $\sum_{i = 1}^{n}$ f$_{e_{i}}$(B) $\geqslant$} $\sum_{i = 1}^{n}$ f$_{e_{i}}$(A $\cup$ B) + $\sum_{i = 1}^{n}$ f$_{e_{i}}$(A $\cap$ B) $\rightarrow$ \mbox{f(A) + f(B) $\geqslant$ f(A $\cup$ B) + f(A $\cap$ B)}. Clearly, function f is submodular by the equivalence of submodular functions. $\blacksquare$
 
 % ----------------------------------------------------------------
 % Answer ends
