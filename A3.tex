@@ -44,55 +44,36 @@
 % TODO: Write your answer to the question below. 
 % ----------------------------------------------------------------
 
-Suppose G(V, E) is representative of a network where V = \{s, t, v$_{1}$, ..., v$_{n}$\} 
-and E is the set of edges that make up this network. Suppose we have sets S and T such that
-s $\in$ S, t $\in$ T, (S $\cup$ T) - \{s, t\} = V, and S $\cap$ T = $\emptyset$. Also, 
-suppose that for all possible arrangement of vertices in S and T, c(S, T) = f(S, T), which means that G(V, E) has an exponential number of minimum cuts between s and t. Precisely, 2$^{n}$ minimum cuts as each vertex is either in S or T and cannot be in both, thus it is much like a binary string of $\mid$V$\mid$ elements, which can be expressed in 2$^{n}$ possible ways.\\
+\textbf{Construction:}\\
+To construct a family of graphs where G(V, E) has exponential number of minimum
+cuts between source and terminal, we being with n being the number of vertices 
+that appear between the source and the terminal, we will also assume that the capacity 
+on each edge is 1. If n = 0 then there are no vertices between the source and the 
+terminal and thus V = \{s, t\} and E = $\emptyset$, Clearly, a 
+single minimum-cut exists since we can only s $\in$ S and t $\in$ T, no edges exist to place a capacity on, so indeed 2$^{\mid V \mid - 2}$ = 2$^{0}$ = 1.\\ 
 
-To construct a graph that is representative of there being 2$^{n}$ possible minimum cuts, a tree
-like structure seems appropriate since there are 2$^{n}$ leaves in a full and complete tree for n levels in the tree. Taking inspiration from Huffman encoding, we wish to have a graph that for each leaf in a full tree will represent a unique binary string that represents whether a vertex is in S or T. Suppose we arrange the the string as follows, v$_{1}$, ..., v$_{n}$, where if v$_{i}$ is in S then v$_{i}$ = 0 and v$_{i}$ = 1 if it is in T. The tree/graph can be constructed so that each left edge appends 0 to the vertex string, and WLOG each right edge appends 1. Finally, when reaching any leaf we have an n length binary string that represents a unique cut S, T. In total there are 2$^{n}$ such possible cuts.\\ 
+For arbitrary n, n $\geqslant$ 1, and n = $\mid$V$\mid$ - 2, then G(V, E) would be constructed such that V = 
+\{s, t, v$_{1}$, v$_{2}$, ..., v$_{n}$\} and E = \mbox{\{(s, v$_{1}$), (v$_{1}$, t), (s, v$_{2}$), (v$_{2}$, t), ..., (s, v$_{n}$), (v$_{n}$, t)\}} (i.e. the only edges connected to a vertex are those that have s as their startpoint, or t as their endpoint). This arrangement is chosen because every cut in G(V, E) will be a minimum cut. By the arrangement of G(V, E), and since all capacities are the same. Whether a vertex v is or is not in the set S will not affect the summation of outgoing edge capacities, either the capacity from (v, t) or from (s, v), respectively, will be used in computing the minimum cut. Therefore we have a maximum number of minimum cuts in G.\\ 
 
-For example, suppose we had $\mid$V$\mid$ = 3 and we are certain that there are an exponential number of minimum cuts. We construct a full and complete binary tree as follows to represent the minimum cuts:\\
-
-\begin{tikzpicture}[level distance=2cm,
-level 1/.style={sibling distance=5cm},
-level 2/.style={sibling distance=2 cm},
-level 3/.style={sibling distance=1cm}]
-\tikzstyle{every node}=[circle,draw]
-
-\node (Root) {}
-    child {
-    node {} 
-    child { node {} 
-	child {  node {1} edge from parent node[left,draw=none] {0} }
-    	child { node {2} edge from parent node[right,draw=none] {1} }
-    	edge from parent node[left,draw=none] {0} 
-    }
-    child { node {} 
-	child { node {3} edge from parent node[left,draw=none] {0} }
-    	child { node {4} edge from parent node[right,draw=none] {1} }
-	edge from parent node[right,draw=none] {1} 
-    }
-    edge from parent node[left,draw=none] {0}
-}
-child {
-    node {}
-    child { node {} 
-	child {  node {5} edge from parent node[left,draw=none] {0} }
-    	child { node {6} edge from parent node[right,draw=none] {1} }
-    	edge from parent node[left,draw=none] {0} 
-    }
-    child { node {} 
-	child {  node {7} edge from parent node[left,draw=none] {0} }
-    	child { node {8} edge from parent node[right,draw=none] {1} }
-	edge from parent node[right,draw=none] {1} 
-    }
-    edge from parent node[right,draw=none] {1}
-};
-
-\end{tikzpicture} \\
-
-If we were to trace each leaf from the node, in a similar fashion to Huffman encoding, we would have \mbox{1: 000, 2: 001, 3: 010, 4: 011, 5: 100, 6: 101, 7: 110, and 8: 111.} So, it is clear that each binary string representing \mbox{v$_{1}$, v$_{2}$, v$_{3}$} will represent all possible sets S, T such that in total the constructed graph can represent an exponential number of minimum cuts. 
+\textbf{Proof of exponential minimum cuts:}\\
+From the description above, in our construction of G(V, E), for any v$_{i}$ $\in$ V the vertex can be contained within or outside the set that describes a cut in G and the cut is still a minimum cut. If we think of each minimum-cut as being described by a binary string for n = i, i $\geqslant$ 1, (q$_{v_{1}}$, q$_{v_{2}}$, ..., q$_{v_{n}}$), such that:
+\[
+ q_{v_{i}} = 
+\begin{cases} 
+      \hfill 1 \hfill & \text{ if v$_{i}$ $\in$ minimum cut set }\\
+      \hfill 0 \hfill & \text{ if v$_{i}$ $\notin$ minimum cut set} \\
+  \end{cases}
+\]\\
+\underline{Base:} Let n = 1, and let the B$_{1}$ be the set of binary strings describing the minimum cuts in G(V, E). Then B$_{1}$ contains two binary strings such that B$_{1}$ = \{0, 1\}.
+Indeed, $\mid$B$_{1}$$\mid$ = 2 = 2$^{n}$ = 2$^{\mid V \mid - 2}$.\\
+\underline{IH:} Let n = i, i \textgreater ~1, and let B$_{i}$ be the set of binary strings describing the minimum cuts in G(V, E), such that V = 
+\{s, t, v$_{1}$, v$_{2}$, ..., v$_{i}$\} and E = \mbox{\{(s, v$_{1}$), (v$_{1}$, t), (s, v$_{2}$), (v$_{2}$, t), ..., (s, v$_{i}$), (v$_{i}$, t)\}}. Suppose that $\mid$B$_{i}$$\mid$ = 2$^{i}$ = 2$^{\mid V \mid - 2}$.
+\\
+\underline{IS:} Let n = i + 1, it follows from the construction description that V' = 
+\{s, t, v$_{1}$, v$_{2}$, ..., v$_{i}$, v$_{i + 1}$\} and E' = \mbox{\{(s, v$_{1}$), (v$_{1}$, t), (s, v$_{2}$), (v$_{2}$, t), ..., (s, v$_{i}$), (v$_{i}$, t), (s, v$_{i + 1}$), (v$_{i + 1}$, t)\}}. Clearly, the addition of v$_{i + 1}$ extends G(V, E) to G(V', E'). The minimum cuts in G(V', E') are composed from the minimum cuts in G(V, E) except that v$_{i + 1}$ is either inside or outside these previous cuts. Thus, to compute the set of minimum cuts as binary strings, B$_{i + 1}$, simply take each binary string in B$_{i}$ and append a 0 to be a minimum cut where v$_{i + 1}$ is outside the set, and then again take each binary string in B$_{i}$ and append a 1 to be a minimum cut where v$_{i + 1}$ is inside the set. Thus, $\mid$B$_{i + 1}$$\mid$ = 2 * ($\mid$B$_{i}$$\mid$) = 2 * 2$^{i}$ = 2$^{i + 1}$.
+\\
+By proof of induction this construction will have exponential minimum cuts between the source and the terminal. $\blacksquare$
+\\
 
 % ----------------------------------------------------------------
 % Answer ends
