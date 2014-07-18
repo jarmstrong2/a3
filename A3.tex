@@ -131,6 +131,51 @@ In all cases in which the vertices of some edge (u, v) $\in$ E might appear in A
 % TODO: Write your answer to the question below. 
 % ----------------------------------------------------------------
 
+Consider the restructuring of LP formulation of maximum flow into standard form:\\
+maximize: $\vec{c}\cdot\vec{x}$\\
+subject to: A$\vec{x}$ $\leqslant$ $\vec{b}$, $\vec{x}$ $\geqslant$ 0.\\
+Suppose this LP operates on G(V, E) such that paths P = \{p$_{1}$, ..., p$_{n}$\} and 
+E = \{e$_{1}$, ..., e$_{m}$\}.\\
+Let $\vec{c}$ = [1, ..., 1], such that $\mid$$\vec{c}$$\mid$ = n.\\
+Let $\vec{x}$ = [x$_{1}$, ..., x$_{n}$], such that x$_{i}$ = f$_{p_{i}}$, maximum flow along path p$_{i}$.\\
+Let A be and m x n matrix and let A be defined as follows:
+\[
+A[i, j] = 
+\begin{cases} 
+      \hfill 1 \hfill & \text{edge e$_{i}$ appears on path p$_{j}$} \\
+      \hfill 0 \hfill & \text{edge e$_{i}$ does not appears on path p$_{j}$} \\
+  \end{cases}
+\]\\
+Let $\vec{b}$ = [c(e$_{1}$), ..., c(e$_{m}$)], such that $\mid$$\vec{b}$$\mid$ = m.\\ 
+
+Using the restructured LP, we construct the dual as follows:\\
+minimize: $\vec{b}\cdot\vec{y}$\\
+subject to: A$^{t}$$\vec{y}$ $\geqslant$ $\vec{c}$, $\vec{y}$ $\geqslant$ 0.\\
+Let $\vec{y}$ = [y$_{1}$, ..., y$_{m}$], y$_{i}$ is a value associated with e$_{i}$.\\ 
+Again, we define $\vec{c}$ and $\vec{b}$ as the same in the original construction.\\
+Now, A$^{t}$ is an n x m matrix, and so A$^{t}$ is defined as follows:\\
+\[
+A^{t}[i, j] = 
+\begin{cases} 
+      \hfill 1 \hfill & \text{in path p$_{i}$ the edge e$_{j}$ appears} \\
+      \hfill 0 \hfill & \text{in path p$_{i}$ the edge e$_{j}$ does not appear} \\
+  \end{cases}
+\]\\
+The conclusion for the dual LP is that the objective function and constraints 
+represent a construction of a max-flow min-cut, such that when the dual LP
+is complete its solution will equal the max-flow calculated by the original LP.
+It can now be stated:
+\[
+y_{i} = 
+\begin{cases} 
+      \hfill 1 \hfill & \text{edge e$_{i}$ connects sets S and T*} \\
+      \hfill 0 \hfill & \text{edge e$_{i}$ does not connect sets S and T*} \\
+  \end{cases}
+\]
+\tiny{*clearly S and T represent the set of vertices separated by the minimum cut of G(V, E).}\\
+\normalsize{
+Then the objective function represents the summation of the capacity of those edges where y$_{i}$ = 1, and the summation will be the maximum flow in the network G(V, E). The n path constraints, A$^{t}$$\vec{y}$ $\geqslant$ $\vec{c}$, represent the fact that on each path at least one edge connects S to T. Thus, for path p$_{i}$, \mbox{$\sum_{j = 1}^{m}$ a$_{ij}$y$_{j}$ $\geqslant$ 1.}} 
+  
 % ----------------------------------------------------------------
 % Answer ends
 % ----------------------------------------------------------------
