@@ -186,23 +186,21 @@ Then the objective function represents the summation of the capacity of those ed
 % TODO: Write your answer to the question below. 
 % ----------------------------------------------------------------
 
-P, polytope, is represented by A$\vec{x}$ $\leqslant$ $\vec{b}$. Let $\vec{x}$ $\in$ 
-$\mathbb{R}^{n}$, so $\vec{x}$ is a point within P if A$\vec{x}$ $\leqslant$ $\vec{b}$ holds.
-More specifically, let A be an m x n matrix, and $\vec{b}$ a series of m constants, such that 
+Polytope P is represented by Ax $\leqslant$ b. Let x $\in$ 
+$\mathbb{R}^{n}$, so x is a point within P if Ax $\leqslant$ b holds.
+More specifically, let A be an m x n matrix, and b a series of m constants, such that 
 a$_{i1}$x$_{1}$ + ... + a$_{in}$x$_{n}$ $\leqslant$ b$_{i}$ represents a closed half-space for each
 facet of the polytope, so that when all constraints are combined they represent all 
 internal  and boundary points of P.*\\
 
-Suppose $\vec{x}$ exists at the border of P, then for some i, specifically the i that represents the facet on which $\vec{x}$ exists, a$_{i1}$x$_{1}$ + ... + a$_{in}$x$_{n}$ = b$_{i}$. Ideally if we are to find some centre $\vec{y}$ $\in$ $\mathbb{R}^{n}$ in P such that the largest ball can fit inside, it would follow that some point on the ball must intersect with at least one of the facets of P.\\
+The LP must be designed so that we find a centre point y of a ball in P, such that all points on the surface of the ball that intersect in the plane where P exists are also in P. Suppose some point x exists at the border of P, then for some i, specifically the i that represents the facet on which x exists, a$_{i1}$x$_{1}$ + ... + a$_{in}$x$_{n}$ = b$_{i}$. So, if the ball is the largest possible ball to fit in P the surface points must be as close to the boundaries as possible.\\
 
-The LP must be designed so that we find a centre of the ball $\vec{y}$ in P, such that all points on the surface of the ball that are in the plane where P exists are also in P. Additionally, one or more of these points intersects with at least one of the facets.\\
-
-Suppose that $\vec{a}$$_{i}$ = [a$_{i1}$, ..., a$_{in}$] is a unit vector for some i, such that $\lVert$$\vec{a}$$_{i}$$\rVert$ = 1. Indeed, $\vec{a}$$_{i}$ is the unit vector normal to the facet represented by a$_{1}$x$_{1}$ + ... + a$_{n}$x$_{n}$ = b$_{i}$. To discover if the ball at center $\vec{y}$ with radius r $\in$ $\mathbb{R}$ can fit in P we check for each facet i if the surface point $\vec{z}_{i}$ = ($\vec{a}$$_{i}$*r + $\vec{y}$), that is perpendicular to the facet i, is within P. In order to find the largest such ball, the LP must be designed to calculate maximum radius r with centre $\vec{y}$ given constraints a$_{i1}$z$_{i1}$ + ... + a$_{in}$z$_{in}$ $\leqslant$ b$_{i}$, for all i.  \\
+Suppose that $\vec{a}$$_{i}$ = [a$_{i1}$, ..., a$_{in}$] is a unit vector for some i, such that $\lVert$$\vec{a}$$_{i}$$\rVert$ = 1. Indeed, $\vec{a}$$_{i}$ is the unit vector normal to the facet represented by a$_{i1}$x$_{1}$ + ... + a$_{in}$x$_{n}$ = b$_{i}$. Also, as a normal vector, $\vec{a}$$_{i}$ points in the direction outside the closed half-space defined by a$_{i1}$x$_{1}$ + ... + a$_{in}$x$_{n}$ $\leqslant$ b$_{i}$. To discover if the ball at center y with radius r $\in$ $\mathbb{R}$ can fit in P we check for each facet i if the surface point z$_{i}$ = ($\vec{a}$$_{i}$*r + y), perpendicular to the facet i, is within P. To do this we use the constraint a$_{i1}$z$_{i1}$ + ... + a$_{in}$z$_{in}$ $\leqslant$ b$_{i}$. To explain z$_{i}$ further, $\vec{a}$$_{i}$*r is an r length vector that when added to y, projects a point to the surface or boundary of the ball and is perpendicular to facet i. In order to find the largest such ball, the LP must be designed to calculate both the ball's maximum radius r and its centre point y. This is done by establishing z$_{i}$'s such that for all i, given constraints a$_{i1}$z$_{i1}$ + ... + a$_{in}$z$_{in}$ $\leqslant$ b$_{i}$, we want a$_{i1}$z$_{i1}$ + ... + a$_{in}$z$_{in}$ to be as close as possible to b$_{i}$ for some maximum r and centre point y.\\
 
 Thus, the LP is:\\
 \textbf{maximize:} \\r\\
 \textbf{subject to:} \\
-$\vec{a}_{i} ~\cdot$ ($\vec{a}$$_{i}$*r + $\vec{y}$) $\leqslant$ b$_{i}$, $\forall$ i, 1 $\leqslant$ i $\leqslant$ m\\ r $\geqslant$ 0.\\
+$\vec{a}_{i} ~\cdot$ ($\vec{a}$$_{i}$*r + y) $\leqslant$ b$_{i}$, $\forall$ i, 1 $\leqslant$ i $\leqslant$ m\\ r $\geqslant$ 0.\\
 
 \tiny{*explanation of polotope taken from wikipedia, http:$\backslash$$\backslash$en.wikipedia.org$\backslash$wiki$\backslash$Convex\_polytope.}\\
 \normalsize{}
