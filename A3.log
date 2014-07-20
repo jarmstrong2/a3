@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  20 JUL 2014 08:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  20 JUL 2014 10:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -831,30 +831,60 @@ Underfull \hbox (badness 10000) in paragraph at lines 205--210
 
  []
 
-[5] [6] [7] [8] [9] (./A3.aux) ) 
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 216--219
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--227
+
+ []
+
+
+Overfull \hbox (2.80685pt too wide) in paragraph at lines 220--230
+| $[]$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--230
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--236
+
+ []
+
+
+Overfull \hbox (2.80685pt too wide) in paragraph at lines 231--241
+| $[]$
+ []
+
+[6] [7] [8] [9] (./A3.aux) ) 
 Here is how much of TeX's memory you used:
- 13753 strings out of 494227
- 241903 string characters out of 6157703
- 332163 words of memory out of 5000000
- 16769 multiletter control sequences out of 15000+600000
+ 13754 strings out of 494227
+ 241915 string characters out of 6157703
+ 332164 words of memory out of 5000000
+ 16770 multiletter control sequences out of 15000+600000
  5902 words of font info for 24 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
- 63i,17n,57p,1373b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
-</opt/local/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmbsy10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmbx10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfo
-nts/cm/cmex10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmmi10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmm
-i5.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb
-></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt
-/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></opt/local/
-share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/local/share/t
-exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/local/share/texmf-
-texlive/fonts/type1/public/amsfonts/cm/cmsy5.pfb></opt/local/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/local/share/texmf-texlive/font
-s/type1/public/amsfonts/symbols/msam10.pfb></opt/local/share/texmf-texlive/font
-s/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on A3.pdf (9 pages, 157433 bytes).
+ 63i,17n,57p,1373b,351s stack positions out of 5000i,500n,10000p,200000b,80000s
+</opt/local/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmbsy10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsf
+onts/cm/cmbx10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmex10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+mi10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.p
+fb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></o
+pt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/loc
+al/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></opt/local/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/local/share/texmf
+-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/local/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmsy5.pfb></opt/local/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmsy7.pfb></opt/local/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/symbols/msam10.pfb></opt/local/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/symbols/msbm10.pfb>
+Output written on A3.pdf (9 pages, 159254 bytes).
 PDF statistics:
  93 PDF objects out of 1000 (max. 8388607)
  67 compressed objects within 1 object stream
