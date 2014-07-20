@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  19 JUL 2014 20:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  20 JUL 2014 08:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -835,11 +835,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 205--210
 Here is how much of TeX's memory you used:
  13753 strings out of 494227
  241903 string characters out of 6157703
- 332164 words of memory out of 5000000
+ 332163 words of memory out of 5000000
  16769 multiletter control sequences out of 15000+600000
  5902 words of font info for 24 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
- 63i,17n,57p,1330b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,17n,57p,1373b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
 </opt/local/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/cm/cmbsy10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfo
@@ -854,7 +854,7 @@ texlive/fonts/type1/public/amsfonts/cm/cmsy5.pfb></opt/local/share/texmf-texliv
 e/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/local/share/texmf-texlive/font
 s/type1/public/amsfonts/symbols/msam10.pfb></opt/local/share/texmf-texlive/font
 s/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on A3.pdf (9 pages, 157422 bytes).
+Output written on A3.pdf (9 pages, 157433 bytes).
 PDF statistics:
  93 PDF objects out of 1000 (max. 8388607)
  67 compressed objects within 1 object stream
