@@ -213,28 +213,24 @@ $\vec{a}_{i} ~\cdot$ ($\vec{a}$$_{i}$*r + y) $\leqslant$ b$_{i}$, $\forall$ i, 1
 % ----------------------------------------------------------------                                                                               
 % TODO: Write your answer to the question below.                                                                                                 
 % ----------------------------------------------------------------                                                                               
-\textbf{Claim:} \\$\exists$ s, t $\geqslant$ 0, sA$_{1}$ + tA$_{2}$ = 0 $\rightarrow$
-sb$_{1}$ + tb$_{2}$ \textless ~0.\\
-\textbf{Proof:} \\Indeed, if x $\in$ P$_{1}$ then A$_{1}$x $\leqslant$ b$_{1}$, or if x $\in$ P$_{1}$ then A$_{2}$x $\leqslant$ b$_{2}$. Assume that P$_{1}$ and P$_{2}$ do not intersect, then $\nexists$ x such that A$_{1}$x $\leqslant$ b$_{1}$ and A$_{2}$x $\leqslant$ b$_{2}$. Then choose a point y $\notin$ P$_{1}$ and y $\notin$ P$_{2}$, such that A$_{1}$y \textgreater ~b$_{1}$ and A$_{2}$y \textgreater ~b$_{2}$, so that we might relate A$_{1}$ and A$_{2}$ to b$_{1}$ and b$_{2}$.\\
 
-Suppose we have found s, t $\geqslant$ 0, such that sA$_{1}$ + tA$_{2}$ = 0. If we apply
-s and t to the respective inequalities the relation still holds because all values in s and t are greater than or equal to zero. Thus, s(A$_{1}$y) \textgreater ~sb$_{1}$ and t(A$_{2}$y) \textgreater ~tb$_{2}$. Combining them we have:\\
-\hspace*{1cm}\parbox{16cm}{s(A$_{1}$y) + t(A$_{2}$y) \textgreater ~sb$_{1}$ + tb$_{2}$ $\rightarrow$\\
-(sA$_{1}$)y + (tA$_{2}$)y \textgreater ~sb$_{1}$ + tb$_{2}$ $\rightarrow$\\
-(sA$_{1}$ + tA$_{2}$)y \textgreater ~sb$_{1}$ + tb$_{2}$ $\rightarrow$\\
-(0)y \textgreater ~sb$_{1}$ + tb$_{2}$ $\rightarrow$\\
-0 \textgreater ~sb$_{1}$ + tb$_{2}$\\
-}
-Then it follows, $\exists$ s, t $\geqslant$ 0, sA$_{1}$ + tA$_{2}$ = 0 $\rightarrow$
-sb$_{1}$ + tb$_{2}$ \textless ~0. $\blacksquare$\\
+Suppose that P$_{1}$ and P$_{2}$ were to intersect, a primal LP that might define this
+intersection could be:\\
+\textbf{maximize:} cx\\
+\textbf{subject to:} 
+A$_{1}$x + A$_{2}$x $\leqslant$ b$_{1}$ + b$_{2}$\\
 
-Indeed, to show that it is neccessary for P$_{1}$ and P$_{2}$ to be non-intersecting in order for the statement to hold, suppose there was a point x $\in$ P$_{1}$ and x $\in$ P$_{2}$. We would have:\\   
-\hspace*{1cm}\parbox{16cm}{s(A$_{1}$x) + t(A$_{2}$x) $\leqslant$ ~sb$_{1}$ + tb$_{2}$ $\rightarrow$\\
-(sA$_{1}$)x + (tA$_{2}$)x $\leqslant$ ~sb$_{1}$ + tb$_{2}$ $\rightarrow$\\
-(sA$_{1}$ + tA$_{2}$)x $\leqslant$ ~sb$_{1}$ + tb$_{2}$ $\rightarrow$\\
-0 $\leqslant$ ~sb$_{1}$ + tb$_{2}$\\
-}
-It would follow with both sb$_{1}$ + tb$_{1}$ $\geqslant$ 0 and sb$_{1}$ + tb$_{2}$ \textless ~0 being possible, that the claim would be impossible to prove.
+Also its dual LP:\\
+\textbf{minimize:} sb$_{1}$ + tb$_{2}$\\
+\textbf{subject to:} 
+sA$_{1}$ + tA$_{2}$ = c,
+s, t $\geqslant$ 0.\\
+
+However, we know that P$_{1}$ and P$_{2}$ do not intersect, so in the primal LP no
+x will be found with the provided constraint. The primal LP is infeasible. In the dual LP suppose we let c be the zero vector, then clearly there exists an s and t such that sA$_{1}$ + tA$_{2}$ =$\vec{0}$. By the theorem of duality, where the primal LP has an optimal solution iff the dual has an optimal solution, and their solutions are the same. It follows that our dual LP cannot have an optimal solution, or else it would contradict the infeasibility of the primal LP.\\
+
+If both LP's had optimal solutions then by weak duality we would have,  
+sA$_{1}$x + tA$_{2}$x = cx $\leqslant$ sb$_{1}$ + tb$_{2}$. Indeed, in the feasible case, the result of the dual LP would be an upperbound to the result of the primal LP. As stated previously, c = $\vec{0}$, and any point y dot product with c equals 0. However, in the situation where P$_{1}$ and P$_{2}$ do not intersect, there cannot exist x such that sA$_{1}$x + tA$_{2}$x = 0 and sb$_{1}$ + tb$_{2}$ $\geqslant$ 0. It follows that sb$_{1}$ + tb$_{2}$ \textless ~0 (i.e. the dual LP is unbounded) when sA$_{1}$ + tA$_{2}$ = $\vec{0}$. $\blacksquare$
 % ----------------------------------------------------------------                                                                               
 % Answer ends                                                                                                                                    
 % ---------------------------------------------------------------- 
@@ -245,6 +241,8 @@ It would follow with both sb$_{1}$ + tb$_{1}$ $\geqslant$ 0 and sb$_{1}$ + tb$_{
 % ----------------------------------------------------------------                                                                               
 % TODO: Write your answer to the question below.                                                                                                 
 % ----------------------------------------------------------------                                                                               
+
+
 
 % ----------------------------------------------------------------                                                                               
 % Answer ends                                                                                                                                    
