@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  21 JUL 2014 20:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  22 JUL 2014 15:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -832,17 +832,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 205--210
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 217--222
+Underfull \hbox (badness 10000) in paragraph at lines 216--220
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--228
+Underfull \hbox (badness 10000) in paragraph at lines 221--224
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--231
+Underfull \hbox (badness 10000) in paragraph at lines 225--230
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--235
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--240
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--246
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--249
 
  []
 
@@ -869,7 +889,7 @@ ive/fonts/type1/public/amsfonts/cm/cmsy5.pfb></opt/local/share/texmf-texlive/fo
 nts/type1/public/amsfonts/cm/cmsy7.pfb></opt/local/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/symbols/msam10.pfb></opt/local/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on A3.pdf (9 pages, 159275 bytes).
+Output written on A3.pdf (9 pages, 159639 bytes).
 PDF statistics:
  93 PDF objects out of 1000 (max. 8388607)
  67 compressed objects within 1 object stream
