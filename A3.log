@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  22 JUL 2014 15:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  23 JUL 2014 17:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**A3.tex
-(./A3.tex
+**a3.tex
+(./a3.tex
 LaTeX2e <2011/06/27>
 Babel <3.9f> and hyphenation patterns for 43 languages loaded.
 (./csc_assignment.cls
@@ -612,8 +612,8 @@ File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
 \c@tkz@gr@ta=\count150
 \c@tkz@gr@tb=\count151
 )
-(./A3.aux)
-\openout1 = `A3.aux'.
+(./a3.aux)
+\openout1 = `a3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
@@ -866,7 +866,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 247--249
 
  []
 
-[6] [7] [8] [9] (./A3.aux) ) 
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 262--265
+
+ []
+
+
+LaTeX Warning: Command \textgreater invalid in math mode on input line 268.
+
+
+LaTeX Warning: Command \textgreater invalid in math mode on input line 268.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--270
+
+ []
+
+
+Overfull \hbox (16.09933pt too wide) in paragraph at lines 271--275
+\OT1/cmr/m/n/10 Where $\OMS/cmsy/m/n/10 j$\OT1/cmr/m/n/10 V$\OMS/cmsy/m/n/10 j$
+ \OT1/cmr/m/n/10 = n, and $\OMS/cmsy/m/n/10 j$\OT1/cmr/m/n/10 E$\OMS/cmsy/m/n/1
+0 j$ \OT1/cmr/m/n/10 = m. Then c and x are m length vec-tors where c = [c(e$[]$
+), ..., c(e$[]$)] and [].
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 271--275
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 285--291
+
+ []
+
+[7] [8] [9] [10] (./a3.aux) ) 
 Here is how much of TeX's memory you used:
  13754 strings out of 494227
  241915 string characters out of 6157703
@@ -875,10 +914,11 @@ Here is how much of TeX's memory you used:
  5902 words of font info for 24 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
  63i,17n,57p,1373b,351s stack positions out of 5000i,500n,10000p,200000b,80000s
-</opt/local/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmbsy10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsf
-onts/cm/cmbx10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmex10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+</opt/local/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmbsy10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmbx10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmex10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cmex
+tra/cmex7.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
 mi10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.p
 fb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></o
 pt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/loc
@@ -889,10 +929,10 @@ ive/fonts/type1/public/amsfonts/cm/cmsy5.pfb></opt/local/share/texmf-texlive/fo
 nts/type1/public/amsfonts/cm/cmsy7.pfb></opt/local/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/symbols/msam10.pfb></opt/local/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on A3.pdf (9 pages, 159639 bytes).
+Output written on a3.pdf (10 pages, 172865 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
+ 100 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
