@@ -285,12 +285,18 @@ Also, b is an n length vector such that the first n entries are zero and the ent
 Converting to the dual LP:\\
 \textbf{maximize:} y $\cdot$ b\\
 \textbf{subject to:} yA $\leqslant$ c, y $\geqslant$ 0.\\
-We do not know what y represents other than the fact that it is an n + 1 length vector. Indeed the first n elements in y must represent some function on each of the n vertices in G(V, E), let q be the last element of y. There are m constraints given that A is an n + 1 x m matrix. Such that each constraint is based on each edge in E. It would follow that for each (u, v) the constraint would be y$_{u}$ - y$_{v}$ + q $\leqslant$ c(u, v). As defined in A, \mbox{y$_{u}$ - y$_{v}$}, because u is a startpoint and v an endpoint, and the addition of q due to the row of 1's in the $(n+1)^{th}$ row. Additionally, the objective function y $\cdot$ b = q. Rewriting the dual:\\
+We do not know what y represents other than the fact that it is an n + 1 length vector. Indeed the first n elements in y must represent some function on each of the n vertices in G(V, E), we will take y$_{i}$ to represent some value associated with vector i. Additionally, let q be the last element of y. There are m constraints given that A is an n + 1 x m matrix. Such that each constraint is based on each edge in E. It would follow that for each (u, v) the constraint would be y$_{u}$ - y$_{v}$ + q $\leqslant$ c(u, v). As defined in A, \mbox{y$_{u}$ - y$_{v}$}, because u is a startpoint and v an endpoint, and the addition of q due to the row of 1's in the $(n+1)^{th}$ row. Additionally, the objective function y $\cdot$ b = q. Rewriting the dual:\\
 \textbf{maximize:} q\\
-\textbf{subject to:} y$_{u}$ - y$_{v}$ + q $\leqslant$ c(u, v) $\forall$ (u, v).\\
+\textbf{subject to:} y$_{u}$ - y$_{v}$ + q $\leqslant$ c(u, v), $\forall$ (u, v).\\
 
-By the duality theorem, when the dual is complete, q should represent the mean of the minimum mean cycle. To identify what y$_{i}$ represents suppose we know f(u, v) from the completed primal LP for G(V, E), then we can apply f(u,v) to the constraint for (u, v):\\
-...
+By the duality theorem, when the dual LP is complete, q should represent the mean of the minimum mean cycle. Suppose we rearrange the constraints such that c(u, v) + y$_{v}$ - y$_{u}$ $\geqslant$ q, $\forall$ (u, v). Also, suppose we know  some cycle C*(V*, E*) in G(V, E, c). Now if we take only the constraints of that cycle and sum them together we have:\\
+$\sum_{(u, v) \in E^{*}}$ (c(u, v) + y$_{v}$ - y$_{u}$) $\geqslant$ $\sum_{(u, v) \in E^{*}}$ q $\rightarrow$\\
+$\sum_{(u, v) \in E^{*}}$ c(u, v) + $\sum_{(u, v) \in E^{*}}$ (y$_{v}$ - y$_{u}$) $\geqslant$ $\mid$E*$\mid$ * q $\rightarrow$\\
+($\sum_{(u, v) \in E^{*}}$ c(u, v) + $\sum_{(u, v) \in E^{*}}$ (y$_{v}$ - y$_{u}$))/$\mid$E*$\mid$ $\geqslant$ q $\rightarrow$\\
+As stated previously, the optimal value of q is the mean of the minimum mean cycle, a tight bound only occurs when q = $\frac{\sum_{e \in E'} c(e)}{\mid E' \mid}$, for the minimum mean cycle C(V', E'). In order to establish a tight bound on q, it follows for the edges of any arbitrary cycle that $\sum_{(u, v) \in E^{*}}$ (y$_{v}$ - y$_{u}$) = 0, then we have q $\leqslant$ $\frac{\sum_{e \in E^{*}} c(e)}{\mid E^{*} \mid}$. Indeed if C*(V*, E*) is the minimum mean cycle then \mbox{q = $\frac{\sum_{e \in E^{*}} c(e)}{\mid E^{*} \mid}$}.
+
+
+
 % ----------------------------------------------------------------                                                                               
 % Answer ends                                                                                                                                    
 % ----------------------------------------------------------------
