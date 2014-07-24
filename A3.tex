@@ -315,8 +315,46 @@ Max Profit Function: Max P =  x$_{1}$ + 1.5 x$_{2}$\\
 
 \textbf{Constraints:}\\
 x$_{1}$ +  x$_{2}$  $\leqslant$ 3000\\
-x$_{2}$  $\leqslant$ 2x$_{1}$$\rightarrow$ x$_{2}$-2x$_{1}$  $\leqslant$ 0\\
+2x$_{2}$  $\leqslant$ x$_{1}$    $\rightarrow$     2x$_{2}$ - x$_{1}$  $\leqslant$ 0\\
 x$_{1}, $x$_{2}$ $\geqslant$ 0\\
+
+First constraint shows how the combination of conventional milk and organic milk alice sells in a week must be at least 3000 litre.\\
+Second constraint shows that for every 1 litre of organic milk alice buys, she needs to buy at least 2 litre of conventional milk. \\
+Third line of constraint shows that there cannot be negative amount of conventional or organic milk.\\
+
+Standard LP Form:\\
+Maximize
+
+\[ \text{ $\vec{c}$ }= \left| \begin{array}{c}
+1 \\
+1.5 \end{array} \right| 
+\text{~~~\textbullet ~~~} \text{$\vec{x}$ } = \left| \begin{array}{c}
+\text{ x$_{1}$ } \\
+\text{ x$_{2}$ } \end{array} \right| \] 
+
+Subject to: \\
+
+\[\text{$\vec{A}$ } = \left| \begin{array}{cc}
+1 & 1  \\
+2 & -1 \end{array} \right|
+\text{~~~\textbullet ~~~}
+\left| \begin{array}{cc}
+\text{ x$_{2}$ } & \text{ x$_{1}$ }  \\
+\text{ x$_{2}$ } & \text{ x$_{1}$ } \end{array} \right|
+\text{ $\leqslant$ }
+\left| \begin{array}{c}
+3000  \\
+0 \end{array} \right|
+ \] 
+\[ \left| \begin{array}{cc}
+1 & 1  \end{array} \right|
+\text{~~~\textbullet ~~~}
+\left| \begin{array}{cc}
+\text{ x$_{2}$ } & \text{ x$_{1}$ }  \end{array} \right|
+\text{ $\geqslant$ }
+\left| \begin{array}{c}
+0 \end{array} \right|
+ \] 
 
 % ----------------------------------------------------------------                                                                               
 % Answer ends                                                                                                                                    
