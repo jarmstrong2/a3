@@ -105,16 +105,16 @@ Consider the set of edges in G(V, E), E = \{e$_{1}$, e$_{2}$, ..., e$_{n}$\}. If
 And so, f(S) = $\sum_{i = 1}^{n}$ f$_{e_{i}}$(S). Suppose (u, v) is an arbitrary edge in E, also suppose A, B are some arbitrary subsets of V. We wish to show in all cases, however vertices u and v appear or do not appear in A and/or B, that \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)}:\\
 \hspace*{1cm}\parbox{16cm}{\underline{Case 1: u $\notin$ A and u $\notin$ B:}
 Clearly, u $\notin$ (A $\cup$ B) and u $\notin$ (A $\cap$ B), thus, f$_{(u,v)}$(A) = f$_{(u,v)}$(B) = f$_{(u,v)}$(A $\cup$ B) = f$_{(u,v)}$(A $\cap$ B) = 0. So, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
-\underline{Case 2: u $\in$ A and u $\notin$ B (W.L.O.G. swtiching B for A in this case and all subcases the claim holds):}\\
+\underline{Case 2: u $\in$ A and u $\notin$ B (The case for u $\in$ B and u $\notin$ A is symmetric):}\\
 \hspace*{1cm}\parbox{15cm}{\underline{Case 2.1: v $\in$ A:}
 Clearly, u, v $\in$ (A $\cup$ B) and u $\notin$ (A $\cap$ B), it follows that f$_{(u,v)}$(A) = f$_{(u,v)}$(B) = f$_{(u,v)}$(A $\cup$ B) = f$_{(u,v)}$(A $\cap$ B) = 0. So, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
 \underline{Case 2.2: v $\notin$ A and v $\in$ B:} So, f$_{(u,v)}$(A)  = 1 and f$_{(u,v)}$(B) = 0, but since u, v $\in$ (A $\cup$ B) and u $\notin$ (A $\cap$ B), then f$_{(u,v)}$(A $\cup$ B) = f$_{(u,v)}$(A $\cap$ B) = 0. So, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
 \underline{Case 2.3: v $\notin$ A and v $\notin$ B:} Again, f$_{(u,v)}$(A)  = 1 and f$_{(u,v)}$(B) = 0. Also, u $\in$ (A $\cup$ B) and v $\notin$ (A $\cup$ B), then f$_{(u,v)}$(A $\cup$ B) = 1.
 Again, u $\notin$ (A $\cap$ B), then f$_{(u,v)}$(A $\cap$ B) = 0. So, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
 }
-\underline{Case 3: u $\in$ A and u $\in$ B (W.L.O.G. swtiching B for A in this case and all subcases the claim holds):}\\
+\underline{Case 3: u $\in$ A and u $\in$ B:}\\
 \hspace*{1cm}\parbox{15cm}{\underline{Case 3.1: v $\in$ A and v $\in$ B:} Since u, v $\in$ A and B, then f$_{(u,v)}$(A) = f$_{(u,v)}$(B) = 0. Also, u, v $\in$ \mbox{(A $\cup$ B)} and (A $\cap$ B), then f$_{(u,v)}$(A $\cup$ B) = f$_{(u,v)}$(A $\cap$ B) = 0. So, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
-\underline{Case 3.2: v $\notin$ A and v $\in$ B:} It follows that f$_{(u,v)}$(A) = 1 and f$_{(u,v)}$(B) = 0. Since u, v $\in$ (A $\cup$ B) then f$_{(u,v)}$(A $\cup$ B) = 0, but u $\in$ 
+\underline{Case 3.2: v $\notin$ A and v $\in$ B (The case for v $\notin$ B and v $\in$ A is symmetric):} It follows that f$_{(u,v)}$(A) = 1 and f$_{(u,v)}$(B) = 0. Since u, v $\in$ (A $\cup$ B) then f$_{(u,v)}$(A $\cup$ B) = 0, but u $\in$ 
 (A $\cap$ B) and v $\notin$ (A $\cap$ B), thus f$_{(u,v)}$(A $\cap$ B) = 1. Again, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.\\
 \underline{Case 3.3: v $\notin$ A and v $\notin$ B:} Clearly, f$_{(u,v)}$(A) = 1 and f$_{(u,v)}$(B) = 1. Also, u $\in$ (A $\cup$ B) and (A $\cap$ B), but v $\notin$ (A $\cup$ B) and (A $\cap$ B), then f$_{(u,v)}$(A $\cup$ B) = f$_{(u,v)}$(A $\cap$ B) = 1. Then, \mbox{f$_{(u,v)}$(A) + f$_{(u,v)}$(B) $\geqslant$ f$_{(u,v)}$(A $\cup$ B) + f$_{(u,v)}$(A $\cap$ B)} holds.
 }
@@ -174,7 +174,7 @@ y_{i} =
 \]
 \tiny{*clearly S and T represent the set of vertices separated by the minimum cut of G(V, E).}\\
 \normalsize{
-Then the objective function represents the summation of the capacity of those edges where y$_{i}$ = 1, and the summation will be the maximum flow in the network G(V, E). The n path constraints, A$^{t}$$\vec{y}$ $\geqslant$ $\vec{c}$, represent the fact that on each path at least one edge connects S to T. Thus, for path p$_{i}$, \mbox{$\sum_{j = 1}^{m}$ a$_{ij}$y$_{j}$ $\geqslant$ 1.}} 
+Then the objective function represents the summation of the capacity of those edges where y$_{i}$ = 1, and the summation will be the maximum flow in the network G(V, E). The n path constraints, A$^{t}$$\vec{y}$ $\geqslant$ $\vec{c}$, represent the fact that on each path there exists at least one edge that connects set S to set T. Thus, for path p$_{i}$, \mbox{$\sum_{j = 1}^{m}$ a$_{ij}$y$_{j}$ $\geqslant$ 1.}} 
   
 % ----------------------------------------------------------------
 % Answer ends
@@ -187,15 +187,15 @@ Then the objective function represents the summation of the capacity of those ed
 % ----------------------------------------------------------------
 
 Polytope P is represented by Ax $\leqslant$ b. Let x $\in$ 
-$\mathbb{R}^{n}$, so x is a point within P if Ax $\leqslant$ b holds.
+$\mathbb{R}^{n}$, so x is a point within P and so Ax $\leqslant$ b holds.
 More specifically, let A be an m x n matrix, and b a series of m constants, such that 
 a$_{i1}$x$_{1}$ + ... + a$_{in}$x$_{n}$ $\leqslant$ b$_{i}$ represents a closed half-space for each
 facet of the polytope, so that when all constraints are combined they represent all 
 internal  and boundary points of P.*\\
 
-The LP must be designed so that we find a centre point y of a ball in P, such that all points on the surface of the ball that intersect in the plane where P exists are also in P. Suppose some point x exists at the border of P, then for some i, specifically the i that represents the facet on which x exists, a$_{i1}$x$_{1}$ + ... + a$_{in}$x$_{n}$ = b$_{i}$. So, if the ball is the largest possible ball to fit in P the surface points must be as close to the boundaries as possible.\\
+The LP must be designed so that we find a centre point y of a ball in P, such that all points on the surface of the ball that intersect the plane where P exists are also in P. Suppose some point x exists at the border of P, then for some i that represents the facet on which x exists, we have a$_{i1}$x$_{1}$ + ... + a$_{in}$x$_{n}$ = b$_{i}$. So, if the ball is the largest possible ball to fit in P the surface points must be as close to the boundaries as can be.\\
 
-Suppose that $\vec{a}$$_{i}$ = [a$_{i1}$, ..., a$_{in}$] is a unit vector for some i, such that $\lVert$$\vec{a}$$_{i}$$\rVert$ = 1. Indeed, $\vec{a}$$_{i}$ is the gradient unit vector to the facet represented by a$_{i1}$x$_{1}$ + ... + a$_{in}$x$_{n}$ = b$_{i}$, it is also perpendicular to the facet. Also, as a gradient vector, $\vec{a}$$_{i}$ points in the direction outside the closed half-space defined by a$_{i1}$x$_{1}$ + ... + a$_{in}$x$_{n}$ $\leqslant$ b$_{i}$. To discover if the ball at center y with radius r $\in$ $\mathbb{R}$ can fit in P we check for each facet i if the surface point z$_{i}$ = ($\vec{a}$$_{i}$*r + y), perpendicular to the facet i, is within P. To do this we use the constraint a$_{i1}$z$_{i1}$ + ... + a$_{in}$z$_{in}$ $\leqslant$ b$_{i}$. To explain z$_{i}$ further, $\vec{a}$$_{i}$*r is an r length vector that when added to y, projects a point to the surface or boundary of the ball and is perpendicular to facet i. In order to find the largest such ball, the LP must be designed to calculate both the ball's maximum radius r and its centre point y. This is done by establishing z$_{i}$'s such that for all i, given constraints a$_{i1}$z$_{i1}$ + ... + a$_{in}$z$_{in}$ $\leqslant$ b$_{i}$, we want a$_{i1}$z$_{i1}$ + ... + a$_{in}$z$_{in}$ to be as close as possible to b$_{i}$ for some maximum r and centre point y.\\
+Suppose that $\vec{a}$$_{i}$ = [a$_{i1}$, ..., a$_{in}$] is a unit vector for some facet i, such that $\lVert$$\vec{a}$$_{i}$$\rVert$ = 1. Indeed, $\vec{a}$$_{i}$ is the gradient unit vector to the half-space represented by a$_{i1}$x$_{1}$ + ... + a$_{in}$x$_{n}$ $\leqslant$ b$_{i}$, its direction is also perpendicular to the surface of the half-space, and therefore the facet face. Also, as a gradient/normal vector, $\vec{a}$$_{i}$ points in the direction outside the closed half-space. To discover if the ball at center y with radius r $\in$ $\mathbb{R}$ can fit in P, we check for each facet i if the surface point z$_{i}$ = ($\vec{a}$$_{i}$*r + y) is within P. To do this we use the constraint a$_{i1}$z$_{i1}$ + ... + a$_{in}$z$_{in}$ $\leqslant$ b$_{i}$. To explain z$_{i}$ further, $\vec{a}$$_{i}$*r is an r length vector that when added to y, projects a point to the surface or boundary of the ball and is the point on the ball closest to facet i when the ball is within P. In order to find the largest such ball, the LP must be designed to calculate both the ball's maximum radius r and its optimal centre point y. This is done by establishing z$_{i}$'s such that for all i, given constraints a$_{i1}$z$_{i1}$ + ... + a$_{in}$z$_{in}$ $\leqslant$ b$_{i}$, we want a$_{i1}$z$_{i1}$ + ... + a$_{in}$z$_{in}$ to be as close as possible to b$_{i}$ for some maximum r and optimal centre point y.\\
 
 Thus, the LP is:\\
 \textbf{maximize:} \\r\\
