@@ -407,7 +407,13 @@ Therefore X $\cap$ S$_{i}$ $\not=$ ${\o}$ .\\
 
 \textbf{Now we show if Y is satisfiable $\rightarrow$ $\phi$ is satisfiable:}\\
 
-If Y is satisfiable, it means that 
+If Y is satisfiable, it means that X has all the correct elements x$_{i}$ such that X $\cap$ S$_{i}$ $\not=$ ${\o}$ for all S$_{i}$.\\
+Since X has all the elements to represent each clauses, it means that in each clause of C$_{i}$ there will be at least one element with value 1. (By the properties of Y)\\
+Because the clause has at least one element with the value 1, the clause $\cup$ would output the value 1, and since all clause outputs the value 1, with the $\cap$ logic of CNF it will output 1, thus the SAT is satisfied.\\
+
+
+Since the claim is proven, we have shown that SAT $\leqslant$$_{p}$ q8  and that q8 is NP-Hard.\\
+Since it is NP and NP-Hard, we have shown that q8 is NP-Complete.\\
 % ----------------------------------------------------------------                                                                               
 % Answer ends                                                                                                                                    
 % ----------------------------------------------------------------
