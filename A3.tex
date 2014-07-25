@@ -362,7 +362,48 @@ Subject to: \\
 % ----------------------------------------------------------------                                                                               
 % TODO: Write your answer to the question below.                                                                                                 
 % ----------------------------------------------------------------                                                                               
+To prove our question "q8" to be NP-Complete we need to prove that it is:\\
+1) NP\\
+2) NP Hard\\
 
+\textbf{NP:}\\ 
+Given the result set X: \\
+Check size of set X  = k \\
+Check that X has at least 1 element that coincides with every S$_{i}$ \\
+These together takes polynomial time\\
+Therefore NP is satisfied\\
+
+\textbf{NP-Hard:}\\
+We show that q8 is NP Hard by reduction from the known NP-Complete SAT to our question q8\\ 
+SAT $\leqslant$$_{p}$ q8 \\
+$\phi$ = ( $x_{1}$ $\cup$ $x_{2}$ $\cup$ ...) $\cap$ ($x_{2}$ $\cup$ ...) $\cap$ ... ( ...$\cup$...$\cup$...$\cup$...)\\
+
+\textbf{Properties :}\\
+$x_{1}$ ... $x_{n}$ = each different marbles from the M set.\\
+For each clauses c$_{i}$ above, they will be the representing the set S$_{i}$  $\subseteq$ M\\
+When $x_{1}$ is in clause $c_{1}$, it means that marble 1 is in the set $S_{1}$, and if $x_{2}$ is not present, then it is not in the set.\\
+Each $x_{i}$ in a clause can have the value 0 or 1; If $x_{i}$ has the value 1, that means that x$_{i}$ can be found in the set X, 0 if not.\\
+
+Let's call this representation Y\\
+\textbf{An example of Y:}\\
+If M = [1,2,3,4], $S_{1}$= [1,2], $S_{2}$=[2,3], $S_{3}$=[4]\\
+Then Y would be:\\
+ ( $x_{1}$ $\cup$ $x_{2}$) $\cap$ ($x_{2}$ $\cup$ $x_{3}$ ) $\cap$ ($x_{4}$)\\
+
+Now X=[2,4] by the defination that X $\cap$ S$_{i}$ $\not=$ ${\o}$ from the problem, and thus the value of our clauses above will be: \\
+ (0 $\cup$ 1) $\cap$ (1 $\cup$ 0 ) $\cap$ (1)\\
+
+\textbf{Claim: $\phi$ is satisfiable iff Y is satisfied by our question q8}\\
+
+\textbf{First we show if $\phi$ is satisfiable $\rightarrow$ Y is satisfiable:}\\
+If $\phi$ is satisfiable, it means that our CNF will output the value of 1\\
+This means that all of our clauses in Y will have to output 1 due to $\cap$ property, and each clause will have at least 1 element x$_{i}$ that has the value 1, due to the $\cup$ property.\\
+Since each clause C$_{i}$ represents the set S$_{i}$ from our question, and since each C$_{i}$ has a value 1, then that means our S$_{i}$ will have a marble that coincides with the set X\\
+Therefore X $\cap$ S$_{i}$ $\not=$ ${\o}$ .\\
+
+\textbf{Now we show if Y is satisfiable $\rightarrow$ $\phi$ is satisfiable:}\\
+
+If Y is satisfiable, it means that 
 % ----------------------------------------------------------------                                                                               
 % Answer ends                                                                                                                                    
 % ----------------------------------------------------------------
