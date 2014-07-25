@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  24 JUL 2014 21:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  24 JUL 2014 21:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -931,7 +931,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 337--338
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--352
+Underfull \hbox (badness 10000) in paragraph at lines 351--353
 
  []
 
@@ -959,7 +959,7 @@ s/type1/public/amsfonts/cm/cmsy5.pfb></opt/local/share/texmf-texlive/fonts/type
 1/public/amsfonts/cm/cmsy7.pfb></opt/local/share/texmf-texlive/fonts/type1/publ
 ic/amsfonts/symbols/msam10.pfb></opt/local/share/texmf-texlive/fonts/type1/publ
 ic/amsfonts/symbols/msbm10.pfb>
-Output written on A3.pdf (10 pages, 176964 bytes).
+Output written on A3.pdf (10 pages, 176980 bytes).
 PDF statistics:
  100 PDF objects out of 1000 (max. 8388607)
  72 compressed objects within 1 object stream
