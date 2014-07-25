@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  23 JUL 2014 22:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  24 JUL 2014 21:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**a3.tex
-(./a3.tex
+**A3.tex
+(./A3.tex
 LaTeX2e <2011/06/27>
 Babel <3.9f> and hyphenation patterns for 43 languages loaded.
 (./csc_assignment.cls
@@ -612,8 +612,8 @@ File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
 \c@tkz@gr@ta=\count150
 \c@tkz@gr@tb=\count151
 )
-(./a3.aux)
-\openout1 = `a3.aux'.
+(./A3.aux)
+\openout1 = `A3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
@@ -915,7 +915,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 316--320
 
  []
 
-[9] [10] (./a3.aux) ) 
+[9] [10] (./A3.aux) ) 
 Here is how much of TeX's memory you used:
  13754 strings out of 494227
  241915 string characters out of 6157703
@@ -939,7 +939,7 @@ s/type1/public/amsfonts/cm/cmsy5.pfb></opt/local/share/texmf-texlive/fonts/type
 1/public/amsfonts/cm/cmsy7.pfb></opt/local/share/texmf-texlive/fonts/type1/publ
 ic/amsfonts/symbols/msam10.pfb></opt/local/share/texmf-texlive/fonts/type1/publ
 ic/amsfonts/symbols/msbm10.pfb>
-Output written on a3.pdf (10 pages, 175257 bytes).
+Output written on A3.pdf (10 pages, 175257 bytes).
 PDF statistics:
  100 PDF objects out of 1000 (max. 8388607)
  72 compressed objects within 1 object stream
