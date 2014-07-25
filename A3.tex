@@ -46,17 +46,17 @@
 
 \textbf{Construction:}\\
 To construct a family of graphs where G(V, E) has exponential number of minimum
-cuts between source and terminal, we being with n being the number of vertices 
+cuts between source and terminal, we start with n as the number of vertices 
 that appear between the source and the terminal, we will also assume that the capacity 
 on each edge is 1. If n = 0 then there are no vertices between the source and the 
 terminal and thus V = \{s, t\} and E = $\emptyset$, Clearly, a 
-single minimum-cut exists since we can only s $\in$ S and t $\in$ T, no edges exist to place a capacity on, so indeed 2$^{\mid V \mid - 2}$ = 2$^{0}$ = 1.\\ 
+single minimum-cut exists since we can only have s $\in$ S and t $\in$ T, no edges exist to place a capacity on, so indeed 2$^{\mid V \mid - 2}$ = 2$^{0}$ = 1.\\ 
 
 For arbitrary n, n $\geqslant$ 1, and n = $\mid$V$\mid$ - 2, then G(V, E) would be constructed such that V = 
 \{s, t, v$_{1}$, v$_{2}$, ..., v$_{n}$\} and E = \mbox{\{(s, v$_{1}$), (v$_{1}$, t), (s, v$_{2}$), (v$_{2}$, t), ..., (s, v$_{n}$), (v$_{n}$, t)\}} (i.e. the only edges connected to a vertex are those that have s as their startpoint, or t as their endpoint). This arrangement is chosen because every cut in G(V, E) will be a minimum cut. By the arrangement of G(V, E), and since all capacities are the same. Whether a vertex v is or is not in the set S will not affect the summation of outgoing edge capacities, either the capacity from (v, t) or from (s, v), respectively, will be used in computing the minimum cut. Therefore we have a maximum number of minimum cuts in G.\\ 
 
 \textbf{Proof of exponential minimum cuts:}\\
-From the description above, in our construction of G(V, E), for any v$_{i}$ $\in$ V the vertex can be contained within or outside the set that describes a cut in G and the cut is still a minimum cut. If we think of each minimum-cut as being described by a binary string for n = i, i $\geqslant$ 1, (q$_{v_{1}}$, q$_{v_{2}}$, ..., q$_{v_{n}}$), such that:
+From the description above, in our construction of G(V, E), for any v$_{i}$ $\in$ V, v$_{i}$ may or may not be contained within the set that describes a minimum cut in G. If we think of each minimum-cut as being described by a binary string of size n, (q$_{v_{1}}$, q$_{v_{2}}$, ..., q$_{v_{n}}$), then we define each binary digit as:
 \[
  q_{v_{i}} = 
 \begin{cases} 
@@ -64,7 +64,7 @@ From the description above, in our construction of G(V, E), for any v$_{i}$ $\in
       \hfill 0 \hfill & \text{ if v$_{i}$ $\notin$ minimum cut set} \\
   \end{cases}
 \]\\
-\underline{Base:} Let n = 1, and let the B$_{1}$ be the set of binary strings describing the minimum cuts in G(V, E). Then B$_{1}$ contains two binary strings such that B$_{1}$ = \{0, 1\}.
+\underline{Base:} Let n = 1, and let the B$_{1}$ be the set of binary strings describing all possible minimum cuts in G(V, E). Then B$_{1}$ contains two binary strings such that B$_{1}$ = \{0, 1\}.
 Indeed, $\mid$B$_{1}$$\mid$ = 2 = 2$^{n}$ = 2$^{\mid V \mid - 2}$.\\
 \underline{IH:} Let n = i, i \textgreater ~1, and let B$_{i}$ be the set of binary strings describing the minimum cuts in G(V, E), such that V = 
 \{s, t, v$_{1}$, v$_{2}$, ..., v$_{i}$\} and E = \mbox{\{(s, v$_{1}$), (v$_{1}$, t), (s, v$_{2}$), (v$_{2}$, t), ..., (s, v$_{i}$), (v$_{i}$, t)\}}. Suppose that $\mid$B$_{i}$$\mid$ = 2$^{i}$ = 2$^{\mid V \mid - 2}$.
