@@ -30,7 +30,7 @@
 % TODO: Write your acknowledgements below.
 % ----------------------------------------------------------------
 
-"We declare that we have not used any outside help in completing this assignment."
+"We have used lecture notes, the CLRS textbook, and wikipedia (specifically for polytope, gradient and normal definitions). Otherwise, we declare that we have not used any outside help in completing this assignment."
 
 % ----------------------------------------------------------------
 % Aacknowledgements ends
@@ -372,48 +372,62 @@ To prove our question "q8" to be NP-Complete we need to prove that it is:\\
 
 \textbf{NP:}\\ 
 Given the result set X: \\
-Check size of set X  = k \\
-Check that X has at least 1 element that coincides with every S$_{i}$ \\
-These together takes polynomial time\\
-Therefore NP is satisfied\\
+Check size of set X  $\leqslant$ k \textemdash ~O(1)\\
+Check that X has at least 1 element that coincides with every S$_{i}$ \textemdash ~O(n * m)\\
+These together take polynomial time\\
+Therefore q8 $\in$ NP is satisfied\\
 
 \textbf{NP-Hard:}\\
 We show that q8 is NP Hard by reduction from the known NP-Complete SAT to our question q8\\ 
 SAT $\leqslant$$_{p}$ q8 \\
-$\phi$ = ( $x_{1}$ $\cup$ $x_{2}$ $\cup$ ...) $\cap$ ($x_{2}$ $\cup$ ...) $\cap$ ... ( ...$\cup$...$\cup$...$\cup$...)\\
 
-\textbf{Properties :}\\
-$x_{1}$ ... $x_{n}$ = each different marbles from the M set.\\
-For each clauses c$_{i}$ above, they will be the representing the set S$_{i}$  $\subseteq$ M\\
-When $x_{i}$ is in clause $c_{i}$, it means that marble i is in the set $S_{i}$, and if $x_{i}$ is not present, then it is not in the set.\\
-Each $x_{i}$ in a clause can have the value 0 or 1; If $x_{i}$ has the value 1, that means that x$_{i}$ can be found in the set X (defined in the question), 0 if not.\\
+Given SAT in CNF:\\
+$\phi$ = ($z_{1}$ $\lor$ $\overline{z_{2}}$ $\lor$ ...) $\land$ ($z_{2}$ $\lor$ ...) $\land$ ... ( ...$\lor$...$\lor$...)\\
+$\phi$ = $c_{1}$ $\land$ $c_{2}$ $\land$ ... $\land$ $c_{p}$\\
 
-Let's call this representation Y\\
+\textbf{Properties of the reduction:}\\
+\emph{1.} Let the set of variables Z = \{$z_{1}$, ..., $z_{q}$, $\overline{z_{1}}$, ..., $\overline{z_{q}}$\} such that $\mid$Z$\mid$ = 2q, be converted to the set of marbles \mbox{M = \{x$_{1}$, ..., x$_{q}$, x$_{q + 1}$, ..., x$_{n}$ \}}, such that $\mid$M$\mid$ = n = 2q.\\
+\emph{2.} For each clause c$_{i}$ above, they represent the set S$_{i}$  $\subseteq$ M\\
+\emph{3.} When $z_{j}$ (or $\overline{z_{j}}$)  is in clause $c_{i}$, it means that marble $x_{j}$ (or $x_{j + q}$)  is in the set $S_{i}$, and if $z_{j}$ (or $\overline{z_{j}}$) is not present in $c_{i}$, then $x_{j}$ (or $x_{j + q}$) is not in the set $S_{i}$.\\
+\emph{4.} Set X, defined in the question, is constructed as follows. Each $z_{j}$ (or $\overline{z_{j}}$) in a clause can have the value \mbox{0 or 1}. If $z_{j}$ (or $\overline{z_{j}}$) has the value 1, that means that marble  $x_{j}$ (or $x_{j + q}$) can be placed in the set X, 0 otherwise.\\
+\emph{5.} Finally, let k = $\mid$X$\mid$.\\
+
+\textbf{Claim: Reduction is polynomial}\\
+\emph{1.} O(q), this involves converting each variable to a marble once.\\
+\emph{2.} O(m), suppose there are m clauses, then each clause is converted to a marble set once.\\
+\emph{3.} O(mq), in the worst case each set contains all the variables possible.\\ 
+\emph{4.} O(mq), this involves going through each clause, finding a variable that is assigned a true value, and then finding its corresponding marble and inserting it into X if it is not there already.\\
+\emph{5.} O(q), in the worst case all marbles are in X.\\
+Thus the reduction will be a polynomial algorithm.\\
+
+Let's call the result of the reduction on $\phi$, Y.\\
+
 \textbf{An example of Y:}\\
-If M = [1,2,3,4], $S_{1}$= [1,2], $S_{2}$=[2,3], $S_{3}$=[4]\\
-Then Y would be:\\
- ( $x_{1}$ $\cup$ $x_{2}$) $\cap$ ($x_{2}$ $\cup$ $x_{3}$ ) $\cap$ ($x_{4}$)\\
+Given:\\
+$\phi$ = ($x_{1}$ $\lor$ $x_{2}$) $\land$ ($x_{2}$ $\lor$ $x_{3}$) $\land$ ($x_{4}$)\\
+$x_{1}$ = 0, $x_{2}$ = 1, $x_{3}$ = 0, and $x_{4}$ = 1\\
+Then:\\
+M = [1,2,3,4], $S_{1}$= [1,2], $S_{2}$=[2,3], $S_{3}$=[4]\\
+Now X=[2,4] by the defination that X $\cap$ S$_{i}$ $\not=$ ${\o}$\\
+Also, let k = $\mid$X$\mid$ = 2.\\
 
-Now X=[2,4] by the defination that X $\cap$ S$_{i}$ $\not=$ ${\o}$ from the problem, and thus the value of our clauses above will be: \\
- (0 $\cup$ 1) $\cap$ (1 $\cup$ 0 ) $\cap$ (1)\\
+In this example $\phi$ satisfies SAT and Y satisfies q8.\\
 
 \textbf{Claim: $\phi$ is satisfiable iff Y is satisfied by our question q8}\\
 
 \textbf{First we show if $\phi$ is satisfiable $\rightarrow$ Y is satisfiable:}\\
 If $\phi$ is satisfiable, it means that our CNF will output the value of 1\\
 This means that all of our clauses in Y will have to output 1 due to $\cap$ property, and each clause will have at least 1 element x$_{i}$ that has the value 1, due to the $\cup$ property.\\
-Since each clause C$_{i}$ represents the set S$_{i}$ from our question, and since each C$_{i}$ has a value 1, then that means our S$_{i}$ will have a marble that coincides with the set X\\
-Therefore X $\cap$ S$_{i}$ $\not=$ ${\o}$ .\\
+Since each clause C$_{i}$ represents the set S$_{i}$ from our question, and since each z$_{j}$ (or $\overline{z_{j}}$) in C$_{i}$ with value 1 is a marble x$_{j}$ (or $x_{j + q}$) in X, then that means each S$_{i}$ will have a least one marble that exists in the set X.\\
+Therefore X $\cap$ S$_{i}$ $\not=$ ${\o}$. Also, because the reduction sets k = $\mid$X$\mid$ it follows that q8 will be satisfied.\\
 
 \textbf{Now we show if Y is satisfiable $\rightarrow$ $\phi$ is satisfiable:}\\
-
-If Y is satisfiable, it means that X has all the correct elements x$_{i}$ such that X $\cap$ S$_{i}$ $\not=$ ${\o}$ for all S$_{i}$.\\
+If Y is satisfiable, it means that X has all the correct elements x$_{i}$ such that X $\cap$ S$_{i}$ $\not=$ ${\o}$ for all S$_{i}$, and k $\geqslant$ $\mid$X$\mid$.\\
 Since X has all the elements to represent each clauses, it means that in each clause of C$_{i}$ there will be at least one element with value 1. (By the properties of Y)\\
-Because the clause has at least one element with the value 1, the clause $\cup$ would output the value 1, and since all clause outputs the value 1, with the $\cap$ logic of CNF it will output 1, thus the SAT is satisfied.\\
+Because the clause has at least one element with the value 1, a clause taken separately would output the value 1 because all operators are or operators. Since all clauses output the value 1, with the and operators connecting all clause then the CNF will output 1, thus the SAT is satisfied. \\
 
-
-Since the claim is proven, we have shown that SAT $\leqslant$$_{p}$ q8  and that q8 is NP-Hard.\\
-Since it is NP and NP-Hard, we have shown that q8 is NP-Complete.\\
+Since the claim is proven, we have shown that SAT $\leqslant$$_{p}$ q8  and that q8 is NP-Hard.\\ 
+Since it is NP and NP-Hard, we have shown that q8 is NP-Complete. $\blacksquare$\\
 % ----------------------------------------------------------------                                                                               
 % Answer ends                                                                                                                                    
 % ----------------------------------------------------------------

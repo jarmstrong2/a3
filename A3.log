@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  25 JUL 2014 15:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2013.12.14)  25 JUL 2014 20:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -951,74 +951,98 @@ Underfull \hbox (badness 10000) in paragraph at lines 373--379
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--384
+Underfull \hbox (badness 10000) in paragraph at lines 380--383
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--390
+Underfull \hbox (badness 10000) in paragraph at lines 384--387
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 391--396
+Underfull \hbox (badness 10000) in paragraph at lines 388--394
 
  []
 
 
-LaTeX Warning: Command \o invalid in math mode on input line 397.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 397--399
+Underfull \hbox (badness 10000) in paragraph at lines 395--402
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 400--401
+Underfull \hbox (badness 10000) in paragraph at lines 403--404
 
  []
 
 
-LaTeX Warning: Command \o invalid in math mode on input line 406.
+LaTeX Warning: Command \o invalid in math mode on input line 411.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--407
+Underfull \hbox (badness 10000) in paragraph at lines 405--413
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 408--409
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
 
  []
 
-[10] [11] (./A3.aux) ) 
+
+LaTeX Warning: Command \o invalid in math mode on input line 422.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 418--423
+
+ []
+
+
+LaTeX Warning: Command \o invalid in math mode on input line 425.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--428
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 429--434
+
+ []
+
+[11] (./A3.aux) ) 
 Here is how much of TeX's memory you used:
- 13757 strings out of 494227
- 241955 string characters out of 6157703
+ 13759 strings out of 494227
+ 241976 string characters out of 6157703
  333164 words of memory out of 5000000
- 16773 multiletter control sequences out of 15000+600000
- 5902 words of font info for 24 fonts, out of 8000000 for 9000
+ 16774 multiletter control sequences out of 15000+600000
+ 6248 words of font info for 25 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
  63i,17n,57p,1419b,353s stack positions out of 5000i,500n,10000p,200000b,80000s
-</opt/local/share/texmf-texlive/fonts/type1/public/amsfon
-ts/cm/cmbsy10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmbx10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cme
-x10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cmextra/cme
-x7.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.pfb></op
-t/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/loca
-l/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/local/shar
-e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></opt/local/share/texmf
--texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/local/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/local/share/texmf-texlive/fon
-ts/type1/public/amsfonts/cm/cmsy5.pfb></opt/local/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmsy7.pfb></opt/local/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/symbols/msam10.pfb></opt/local/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/symbols/msbm10.pfb>
-Output written on A3.pdf (11 pages, 183427 bytes).
+</opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm
+/cmbsy10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmb
+x10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.p
+fb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cmextra/cmex7.pf
+b></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></o
+pt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.pfb></opt/loc
+al/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/local/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/local/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></opt/local/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/local/share/texmf-texlive/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></opt/local/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmsy5.pfb></opt/local/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmsy7.pfb></opt/local/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmti10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfon
+ts/symbols/msam10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfon
+ts/symbols/msbm10.pfb>
+Output written on A3.pdf (11 pages, 195953 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 74 compressed objects within 1 object stream
+ 107 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
